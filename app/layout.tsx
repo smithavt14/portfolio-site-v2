@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import Navbar from '@components/Navbar';
 import GoogleAnalytics from '@components/GoogleAnalytics';
 import { ThemeProvider } from '@/providers/ThemeProvider';
+import { BackgroundProvider } from '@/providers/BackgroundProvider';
 
 // Initialize the Inter font
 const inter = Inter({ subsets: ['latin'] });
@@ -20,13 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ThemeProvider>
-        <body className={`${inter.className} fixed inset-0 overflow-hidden select-none bg-zinc-50 dark:bg-zinc-950`}>
-          <Navbar />
-          <main>
-            {children}
-          </main>
-          <GoogleAnalytics />
-        </body>
+        <BackgroundProvider>
+          <body className={`${inter.className} fixed inset-0 overflow-hidden select-none bg-zinc-50 dark:bg-zinc-950`}>
+            <Navbar />
+            <main>{children}</main>
+            <GoogleAnalytics />
+          </body>
+        </BackgroundProvider>
       </ThemeProvider>
     </html>
   );

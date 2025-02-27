@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --navbar-height: 116px;
+  --layout: calc(100vh - var(--navbar-height));
+}
+
+h1,h2,h3,h4,h5,h6 {
+  @apply font-extrabold;
+  @apply text-slate-950 dark:text-slate-50;
+}
+
+p {
+  @apply text-slate-950 dark:text-slate-50;
+  @apply text-base;
+}
+
 html,
 body {
   padding: 0;
