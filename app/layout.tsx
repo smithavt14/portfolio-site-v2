@@ -9,7 +9,7 @@ import { BackgroundProvider } from '@/providers/BackgroundProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Alex Smith | Product, Design, and Development',
+  title: 'Alex Smith | Development, Product, and Design',
   description: 'Building digital experiences',
   icons: {
     icon: '/favicon.png',
