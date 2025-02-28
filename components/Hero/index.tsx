@@ -12,6 +12,7 @@ interface HeroProps {
   linkedinUrl?: string;
   githubUrl?: string;
   emailAddress?: string;
+  className?: string;
 }
 
 export default function Hero({
@@ -21,6 +22,7 @@ export default function Hero({
   linkedinUrl = "https://www.linkedin.com/in/smithavt14/",
   githubUrl = "https://github.com/smithavt14",
   emailAddress = "hello@alex.cn.com",
+  className,
 }: HeroProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -47,7 +49,7 @@ export default function Hero({
       opacity: 1,
       y: 0,
       delay: 1,
-      duration: 0.3,
+      duration: 0.2,
       stagger: 0.3,
       ease: "power1.out",
     });
@@ -56,18 +58,16 @@ export default function Hero({
   return (
     <section
       ref={sectionRef}
-      className={`relative h-fit flex flex-col box-border z-20 space-y-5 py-5 md:py-10 ${
+      className={`relative h-fit flex flex-col box-border z-20 py-5 gap-5 md:py-10 ${
         isLoading ? "opacity-0" : ""
-      }`}
+      } ${className}`}
     >
       <p>{`Hi my name is`}</p>
-      <div className="text-responsive">
-        <h2>{title}</h2>
-        <h2 className="text-slate-400 dark:text-slate-400">{subtitle}</h2>
-      </div>
-      <p className="w-full lg:w-8/12">
-        {description}
-      </p>
+      <h1 className="text-responsive flex flex-col">
+        <span>{title}</span>
+        <span className="text-slate-400 dark:text-slate-400">{`${subtitle}`}</span>
+      </h1>
+      <p className="w-full lg:w-8/12">{description}</p>
       {/* Icon Links */}
       <div id="icon-links" className="flex justify-start items-center">
         {linkedinUrl && (

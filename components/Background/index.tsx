@@ -62,9 +62,29 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
 
   // Setup function for p5
   const setup = (p5: any, canvasParentRef: Element) => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    p5.createCanvas(width, height).parent(canvasParentRef);
+    // Get the parent container's dimensions instead of window dimensions
+    const width = containerRef.current ? containerRef.current.clientWidth : window.innerWidth;
+    const height = containerRef.current ? containerRef.current.clientHeight : window.innerHeight;
+    
+    // Use WebGL renderer for better performance
+    p5.createCanvas(width, height, p5.WEBGL).parent(canvasParentRef);
+    
+    // Set frame rate limit to save resources
+    p5.frameRate(60);
+    
+    // Use appropriate pixel density for the device
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    p5.pixelDensity(pixelRatio);
+    
+    // Store canvas dimensions for easy access
+    p5.canvasWidth = width;
+    p5.canvasHeight = height;
+    
+    // Enable blending for smoother particles
+    if (p5._renderer.GL) {
+      p5._renderer.GL.enable(p5._renderer.GL.BLEND);
+      p5._renderer.GL.blendFunc(p5._renderer.GL.SRC_ALPHA, p5._renderer.GL.ONE_MINUS_SRC_ALPHA);
+    }
   };
 
   // Draw function for p5
@@ -80,9 +100,9 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
       // Common random parameters
       p5.xOffset = p5.random(-150, 150);
       p5.yOffset = p5.random(-150, 150);
-      p5.xSpeed = p5.random(0.5, 1.5);
-      p5.ySpeed = p5.random(0.5, 1.5);
-      p5.rotationSpeed = p5.random(0.7, 1.3);
+      p5.xSpeed = p5.random(0.5, 1.5) * 0.5; // Reduce speed for smoother animation
+      p5.ySpeed = p5.random(0.5, 1.5) * 0.5; // Reduce speed for smoother animation
+      p5.rotationSpeed = p5.random(0.7, 1.3); // Reduce rotation speed
       p5.xFrequency = p5.random(5, 15);
       p5.yFrequency = p5.random(5, 15);
       p5.movementPattern = Math.floor(p5.random(0, 4));
@@ -96,47 +116,70 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
       }
       
       p5.initialized = true;
+      p5.lastUpdateTime = p5.millis();
     }
     
-    p5.background(colors.background);
+    // Calculate time delta for smooth animation
+    const currentTime = p5.millis();
+    const elapsed = currentTime - p5.lastUpdateTime;
+    p5.lastUpdateTime = currentTime;
+    
+    // Limit the maximum time delta to prevent jumps
+    const maxDelta = 100; // max 100ms delta
+    const delta = Math.min(elapsed, maxDelta);
+    
+    // Update animation time
+    p5.t += (delta / 1000) * p5.PI / 10; // Smoother time increment
+    
+    // Clear the background
+    p5.clear();
+    
+    // Reset transformations
+    p5.resetMatrix();
+    
+    // In WebGL mode, translate to simulate top-left origin
+    p5.translate(-p5.width/2, -p5.height/2, 0);
     
     // Draw the selected pattern
     if (currentPattern && currentPattern.draw) {
       currentPattern.draw({ p5, colors });
     }
     
-    // Update common animation parameters
-    updateAnimation(p5);
+    // Update common animation parameters with delta time
+    updateAnimation(p5, delta);
   };
 
-  // Update animation parameters
-  const updateAnimation = (p5: any) => {
-    p5.t += p5.PI / 140;
+  // Update animation parameters with delta time
+  const updateAnimation = (p5: any, delta: number) => {
+    // Convert delta to seconds and scale
+    const dt = delta / 1000;
     
     // Apply different movement patterns based on the random selection
     switch(p5.movementPattern) {
       case 0: // Circular motion
-        p5.xOffset += p5.sin(p5.t/p5.xFrequency + p5.xPhase) * 0.2 * p5.xSpeed;
-        p5.yOffset += p5.cos(p5.t/p5.yFrequency + p5.yPhase) * 0.2 * p5.ySpeed;
+        p5.xOffset += p5.sin(p5.t/p5.xFrequency + p5.xPhase) * 0.2 * p5.xSpeed * dt * 60;
+        p5.yOffset += p5.cos(p5.t/p5.yFrequency + p5.yPhase) * 0.2 * p5.ySpeed * dt * 60;
         break;
       case 1: // Figure-8 motion
-        p5.xOffset += p5.sin(p5.t/p5.xFrequency * 2 + p5.xPhase) * 0.25 * p5.xSpeed;
-        p5.yOffset += p5.sin(p5.t/p5.yFrequency + p5.yPhase) * p5.cos(p5.t/p5.yFrequency) * 0.3 * p5.ySpeed;
+        p5.xOffset += p5.sin(p5.t/p5.xFrequency * 2 + p5.xPhase) * 0.25 * p5.xSpeed * dt * 60;
+        p5.yOffset += p5.sin(p5.t/p5.yFrequency + p5.yPhase) * p5.cos(p5.t/p5.yFrequency) * 0.3 * p5.ySpeed * dt * 60;
         break;
       case 2: // Pulsating motion
-        p5.xOffset += p5.sin(p5.t/p5.xFrequency + p5.xPhase) * 0.15 * p5.xSpeed * (1 + p5.sin(p5.t/3)/2);
-        p5.yOffset += p5.cos(p5.t/p5.yFrequency + p5.yPhase) * 0.15 * p5.ySpeed * (1 + p5.cos(p5.t/4)/2);
+        p5.xOffset += p5.sin(p5.t/p5.xFrequency + p5.xPhase) * 0.15 * p5.xSpeed * (1 + p5.sin(p5.t/3)/2) * dt * 60;
+        p5.yOffset += p5.cos(p5.t/p5.yFrequency + p5.yPhase) * 0.15 * p5.ySpeed * (1 + p5.cos(p5.t/4)/2) * dt * 60;
         break;
       case 3: // Spiral motion
-        p5.xOffset += p5.sin(p5.t/p5.xFrequency + p5.xPhase) * (0.1 + p5.t/1000) % 1 * p5.patternVariation * p5.xSpeed;
-        p5.yOffset += p5.cos(p5.t/p5.yFrequency + p5.yPhase) * (0.1 + p5.t/1000) % 1 * p5.patternVariation * p5.ySpeed;
+        p5.xOffset += p5.sin(p5.t/p5.xFrequency + p5.xPhase) * (0.1 + p5.t/1000) % 1 * p5.patternVariation * p5.xSpeed * dt * 60;
+        p5.yOffset += p5.cos(p5.t/p5.yFrequency + p5.yPhase) * (0.1 + p5.t/1000) % 1 * p5.patternVariation * p5.ySpeed * dt * 60;
         break;
     }
   };
 
   // Handle window resize
   const windowResized = (p5: any) => {
-    p5.resizeCanvas(window.innerWidth, window.innerHeight);
+    const width = containerRef.current ? containerRef.current.clientWidth : window.innerWidth;
+    const height = containerRef.current ? containerRef.current.clientHeight : window.innerHeight;
+    p5.resizeCanvas(width, height);
     
     // Call pattern-specific resize handler if it exists
     if (currentPattern && currentPattern.resize) {
@@ -147,7 +190,7 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
   return (
     <div 
       ref={containerRef} 
-      className="fixed top-0 left-0 w-full h-full -z-10"
+      className="absolute top-0 left-0 w-screen min-h-screen -z-10 overflow-hidden"
     >
       <Sketch setup={setup} draw={draw} windowResized={windowResized} />
     </div>

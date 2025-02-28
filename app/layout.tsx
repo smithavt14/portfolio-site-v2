@@ -1,4 +1,4 @@
-import '@styles/globals.css';
+import '@/styles/globals.css';
 import { Inter } from 'next/font/google';
 import Navbar from '@components/Navbar';
 import GoogleAnalytics from '@components/GoogleAnalytics';
@@ -9,20 +9,20 @@ import { BackgroundProvider } from '@/providers/BackgroundProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Alex Smith | Developer',
+  title: 'Alex Smith | Product, Design, and Development',
   description: 'Building digital experiences',
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  
   return (
-    <html lang="en">
+    <html lang="en" className='dark'>
       <ThemeProvider>
         <BackgroundProvider>
-          <body className={`${inter.className} fixed inset-0 overflow-hidden select-none bg-zinc-50 dark:bg-zinc-950`}>
+          <body className={`${inter.className} inset-0 select-none bg-zinc-100 dark:bg-zinc-950`}>
             <Navbar />
             <main>{children}</main>
             <GoogleAnalytics />
