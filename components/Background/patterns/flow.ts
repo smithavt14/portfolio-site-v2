@@ -44,6 +44,9 @@ const FlowPattern: Pattern = {
     // Start with centered offsets to avoid a sliding-in effect
     p5.xOffset = 0;
     p5.yOffset = 0;
+    
+    // Initialize fade progress (0 = fully transparent, 1 = fully opaque)
+    p5.fadeProgress = 0;
   },
   
   draw: ({ p5, colors }: PatternProps) => {
@@ -59,8 +62,15 @@ const FlowPattern: Pattern = {
     // Accumulate animation delta time
     p5.animDelta += delta;
     
+    // Update fade progress: fade in over 1 second (1000ms)
+    const fadeDuration = 1000;
+    p5.fadeProgress = Math.min(1, p5.fadeProgress + delta / fadeDuration);
+    
+    // Multiply the stroke's alpha value by fade progress for a smooth fade-in.
+    const strokeAlpha = colors.stroke[1] * p5.fadeProgress;
+    
     // Set up rendering style
-    p5.stroke(colors.stroke[0], colors.stroke[1] * 0.9); // Reduce opacity for smoother blending
+    p5.stroke(colors.stroke[0], strokeAlpha);
     p5.noFill();
     
     // In WebGL mode, we can use strokeWeight for point size

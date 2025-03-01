@@ -27,40 +27,38 @@ export default function Hero({
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+  // useEffect(() => {
+  //   const section = sectionRef.current;
+  //   if (!section) return;
 
-    // Get main section children and the icon container's children
-    const iconContainer = section.querySelector("#icon-links");
-    const elements = [
-      ...section.children,
-      ...(iconContainer ? Array.from(iconContainer.children) : []),
-    ] as HTMLElement[];
+  //   // Get main section children and the icon container's children
+  //   const iconContainer = section.querySelector("#icon-links");
+  //   const elements = [
+  //     ...section.children,
+  //     ...(iconContainer ? Array.from(iconContainer.children) : []),
+  //   ] as HTMLElement[];
 
-    setIsLoading(false);
+  //   setIsLoading(false);
 
-    gsap.set(elements, {
-      opacity: 0,
-      y: 20,
-    });
+  //   gsap.set(elements, {
+  //     opacity: 0,
+  //     y: 20,
+  //   });
 
-    gsap.to(elements, {
-      opacity: 1,
-      y: 0,
-      delay: 1,
-      duration: 0.2,
-      stagger: 0.3,
-      ease: "power1.out",
-    });
-  }, []);
+  //   gsap.to(elements, {
+  //     opacity: 1,
+  //     y: 0,
+  //     delay: 1,
+  //     duration: 0.2,
+  //     stagger: 0.3,
+  //     ease: "power1.out",
+  //   });
+  // }, []);
 
   return (
     <section
       ref={sectionRef}
-      className={`relative h-fit flex flex-col box-border z-20 py-5 gap-5 md:py-10 ${
-        isLoading ? "opacity-0" : ""
-      } ${className}`}
+      className={`relative h-fit flex flex-col box-border z-20 py-5 gap-5 md:py-10 ${className}`}
     >
       <p>{`Hi my name is`}</p>
       <h1 className="text-responsive flex flex-col">
