@@ -155,7 +155,7 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
     const dt = delta / 1000;
     
     // Apply different movement patterns based on the random selection
-    switch(p5.movementPattern) {
+    switch (p5.movementPattern) {
       case 0: // Circular motion
         p5.xOffset += p5.sin(p5.t/p5.xFrequency + p5.xPhase) * 0.2 * p5.xSpeed * dt * 60;
         p5.yOffset += p5.cos(p5.t/p5.yFrequency + p5.yPhase) * 0.2 * p5.ySpeed * dt * 60;
@@ -169,10 +169,17 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
         p5.yOffset += p5.cos(p5.t/p5.yFrequency + p5.yPhase) * 0.15 * p5.ySpeed * (1 + p5.cos(p5.t/4)/2) * dt * 60;
         break;
       case 3: // Spiral motion
-        p5.xOffset += p5.sin(p5.t/p5.xFrequency + p5.xPhase) * (0.1 + p5.t/1000) % 1 * p5.patternVariation * p5.xSpeed * dt * 60;
-        p5.yOffset += p5.cos(p5.t/p5.yFrequency + p5.yPhase) * (0.1 + p5.t/1000) % 1 * p5.patternVariation * p5.ySpeed * dt * 60;
+        p5.xOffset += p5.sin(p5.t/p5.xFrequency + p5.xPhase) * (((0.1 + p5.t/1000)) % 1) * p5.patternVariation * p5.xSpeed * dt * 60;
+        p5.yOffset += p5.cos(p5.t/p5.yFrequency + p5.yPhase) * (((0.1 + p5.t/1000)) % 1) * p5.patternVariation * p5.ySpeed * dt * 60;
         break;
     }
+    
+    // Instead of adjusting each point's position after calculation,
+    // apply a non-linear saturation to the offsets themselves.
+    // This naturally limits how far the design moves.
+    const maxOffset = 150; // Change this value to control maximum displacement
+    p5.xOffset = maxOffset * Math.tanh(p5.xOffset / maxOffset);
+    p5.yOffset = maxOffset * Math.tanh(p5.yOffset / maxOffset);
   };
 
   // Handle window resize

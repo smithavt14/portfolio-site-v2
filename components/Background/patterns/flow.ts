@@ -40,6 +40,10 @@ const FlowPattern: Pattern = {
     // Store the last animation time for smooth animation
     p5.lastAnimTime = p5.millis();
     p5.animDelta = 0;
+    
+    // Start with centered offsets to avoid a sliding-in effect
+    p5.xOffset = 0;
+    p5.yOffset = 0;
   },
   
   draw: ({ p5, colors }: PatternProps) => {
@@ -80,18 +84,20 @@ const FlowPattern: Pattern = {
       const { x, y, k, e, o } = point;
       
       try {
-        const q = x / 3 + 99 + 3 / k * p5.sin(y + p5.yOffset/10) + 
-                 k * (1 + p5.cos(y) / 3 + p5.sin(e + o * 4 - p5.t * 2 * p5.rotationSpeed));
-        const c = o / 5 + e / 4 - p5.t / 8 * p5.rotationSpeed;
+        const q = x / 3 + 99 + 3/k * p5.sin(y + p5.yOffset/10) + 
+                  k * (1 + p5.cos(y)/3 + p5.sin(e + o * 4 - p5.t * 2 * p5.rotationSpeed));
+        const c = o/5 + e/4 - p5.t/8 * p5.rotationSpeed;
         
         const baseX = q * p5.cos(c) + 200;
-        const baseY = (q + 49) * p5.sin(c) * p5.cos(c) - q / 3 + 30 * o + 220;
+        const baseY = (q + 49) * p5.sin(c) * p5.cos(c) - q/3 + 30 * o + 220;
         
         // Center the pattern and apply scale
         const screenX = p5.width / 2 + (baseX - 300 + p5.xOffset) * scale;
         const screenY = p5.height / 2 + (baseY - 300 + p5.yOffset) * scale;
         
-        if (screenX >= -10 && screenX <= p5.width + 10 && screenY >= -10 && screenY <= p5.height + 10) {
+        // Render the point if it lies within a reasonable extended bound
+        if (screenX >= -10 && screenX <= p5.width + 10 && 
+            screenY >= -10 && screenY <= p5.height + 10) {
           if (p5.isWebGL) {
             p5.vertex(screenX, screenY);
           } else {
@@ -137,4 +143,4 @@ const FlowPattern: Pattern = {
   }
 };
 
-export default FlowPattern; 
+export default FlowPattern;
