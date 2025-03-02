@@ -62,7 +62,11 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
 
   // Setup function for p5
   const setup = (p5: any, canvasParentRef: Element) => {
-    // Get the parent container's dimensions instead of window dimensions
+    // Clear previous content if any, to avoid duplicate canvases
+    while (canvasParentRef.firstChild) {
+      canvasParentRef.removeChild(canvasParentRef.firstChild);
+    }
+
     const width = containerRef.current ? containerRef.current.clientWidth : window.innerWidth;
     const height = containerRef.current ? containerRef.current.clientHeight : window.innerHeight;
     
@@ -100,10 +104,10 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
       // Common random parameters
       p5.xOffset = p5.random(-150, 150);
       p5.yOffset = p5.random(-150, 150);
-      p5.xSpeed = p5.random(0.5, 1.5) * 0.5; // Reduce speed for smoother animation
-      p5.ySpeed = p5.random(0.5, 1.5) * 0.5; // Reduce speed for smoother animation
-      p5.rotationSpeed = p5.random(0.7, 1.3); // Reduce rotation speed
-      p5.xFrequency = p5.random(5, 15);
+      p5.xSpeed = p5.random(0.5, 1.5) * 0.75; // Reduce speed for smoother animation
+      p5.ySpeed = p5.random(0.5, 1.5) * 0.75; // Reduce speed for smoother animation
+      p5.rotationSpeed = p5.random(1.5, 2.5); // Reduce rotation speed
+      p5.xFrequency = p5.random(5, 15); 
       p5.yFrequency = p5.random(5, 15);
       p5.movementPattern = Math.floor(p5.random(0, 4));
       p5.patternVariation = p5.random(0.3, 1.7);
@@ -177,7 +181,7 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
     // Instead of adjusting each point's position after calculation,
     // apply a non-linear saturation to the offsets themselves.
     // This naturally limits how far the design moves.
-    const maxOffset = 150; // Change this value to control maximum displacement
+    const maxOffset = 300; // Change this value to control maximum displacement
     p5.xOffset = maxOffset * Math.tanh(p5.xOffset / maxOffset);
     p5.yOffset = maxOffset * Math.tanh(p5.yOffset / maxOffset);
   };

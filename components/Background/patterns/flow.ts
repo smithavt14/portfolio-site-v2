@@ -4,22 +4,24 @@ const FlowPattern: Pattern = {
   initialize: (p5) => {
     // Check if we're in WebGL mode
     p5.isWebGL = p5._renderer.isP3D;
+    console.log("p5.isWebGL", p5.isWebGL);
     
     // Create points array
     p5.flowPoints = [];
     
-    // Determine particle count based on screen size
+    // Determine ratio size of the screen
     const screenSize = p5.width * p5.height;
-    const baseScreenSize = 1920 * 1080;
-    const ratio = Math.min(1.5, screenSize / baseScreenSize);
+    const baseScreenSize = 1280 * 832;
+    const rawRatio = screenSize / baseScreenSize;
+    const ratio = Math.max(0.75, Math.min(1, rawRatio));
     
     // Adjust particle count based on renderer
     // Increase particle count for smoother appearance
-    const particleCount = Math.floor(p5.isWebGL ? 40000 * ratio : 25000 * ratio);
+    const particleCount = Math.floor(p5.isWebGL ? 25000 : 15000 );
     
     // Pre-calculate base points
     for (let i = particleCount; i > 0; i--) {
-      const x = i % 130;
+      const x = i % 120;
       const y = i / 320;
       const k = x / 4 - 12.5;
       const e = y / 9;
@@ -29,12 +31,15 @@ const FlowPattern: Pattern = {
       p5.flowPoints.push({ x, y, k, e, o });
     }
     
-    // Set animation parameters - no need for throttling in WebGL mode
-    p5.flowScaleFactor = 3.0; // Increase scale for larger pattern
+    // Adjust flowScaleFactor based on ratio
+    // On smaller devices (ratio < 1), the pattern scale will increase
+    p5.flowScaleFactor = 4.0 / ratio; // Increased scale for smaller devices using ratio
+
+    console.log("p5.flowScaleFactor", p5.flowScaleFactor);
     
     // For WebGL, set point size - much smaller points for less pixelated look
     if (p5.isWebGL) {
-      p5.flowPointSize = 1.5; // Very small points for fine detail
+      p5.flowPointSize = 1.5 * ratio; // Very small points for fine detail
     }
     
     // Store the last animation time for smooth animation
@@ -102,8 +107,8 @@ const FlowPattern: Pattern = {
         const baseY = (q + 49) * p5.sin(c) * p5.cos(c) - q/3 + 30 * o + 220;
         
         // Center the pattern and apply scale
-        const screenX = p5.width / 2 + (baseX - 300 + p5.xOffset) * scale;
-        const screenY = p5.height / 2 + (baseY - 300 + p5.yOffset) * scale;
+        const screenX = p5.width / 2 + (baseX - 200 + p5.xOffset) * scale;
+        const screenY = p5.height / 2 + (baseY - 200 + p5.yOffset) * scale;
         
         // Render the point if it lies within a reasonable extended bound
         if (screenX >= -10 && screenX <= p5.width + 10 && 
@@ -135,7 +140,8 @@ const FlowPattern: Pattern = {
     // Recalculate particle count for new screen size
     const screenSize = p5.width * p5.height;
     const baseScreenSize = 1920 * 1080;
-    const ratio = Math.min(1.5, screenSize / baseScreenSize);
+    const rawRatio = screenSize / baseScreenSize;
+    const ratio = Math.max(0.8, Math.min(1.5, rawRatio));
     const particleCount = Math.floor(p5.isWebGL ? 40000 * ratio : 25000 * ratio);
     
     // Regenerate points if needed
