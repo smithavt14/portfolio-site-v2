@@ -26,4 +26,5 @@ export interface IconLinkProps {
   target?: string;
   rel?: string;
   style?: React.CSSProperties;
+  className?: string;
 } 
