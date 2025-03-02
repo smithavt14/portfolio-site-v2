@@ -4,8 +4,9 @@
 
 :root {
   --navbar-height: 116px;
-  --layout: calc(100vh - var(--navbar-height));
+  --navbar-height-mobile: 76px;
   --layout: calc(100dvh - var(--navbar-height));
+  --mobile-layout: calc(100dvh - var(--navbar-height));
 }
 
 @layer base {

@@ -12,7 +12,8 @@ const config: Config = {
   ],
   theme: {
   	height: {
-  		layout: 'var(--layout)'
+  		layout: 'var(--layout)',
+		mobileLayout: 'var(--mobile-layout)',
   	},
   	extend: {
   		colors: {
