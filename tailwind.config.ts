@@ -16,10 +16,8 @@ const config: Config = {
   	},
   	extend: {
   		colors: {
-  			border: "hsl(var(--border))",
-  			ring: "hsl(var(--ring))",
-  			background: "hsl(var(--background))",
-  			foreground: "hsl(var(--foreground))",
+  			background: "var(--background)",
+  			foreground: "var(--foreground)",
   		},
   		fontSize: {
   			responsive: [

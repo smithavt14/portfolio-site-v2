@@ -19,10 +19,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   
   return (
-    <html lang="en" className='dark'>
+    <html lang="en" className="dark">
       <ThemeProvider>
         <BackgroundProvider>
-          <body className={`${inter.className} inset-0 select-none bg-zinc-100 dark:bg-zinc-950`}>
+          <body className={`${inter.className} inset-0 select-none bg-background text-foreground min-h-dvh`}>
             <Navbar />
             <main>{children}</main>
             <GoogleAnalytics />

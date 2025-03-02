@@ -5,15 +5,46 @@
 :root {
   --navbar-height: 116px;
   --layout: calc(100vh - var(--navbar-height));
+  --layout: calc(100dvh - var(--navbar-height));
 }
 
-* {
-  @apply box-border;
-}
-
-html,
-body {
-  @apply p-0 m-0 overflow-x-hidden font-sans scroll-smooth scrollbar-none;
+@layer base {
+  :root {
+    --background: theme('colors.zinc.100');
+    --foreground: theme('colors.zinc.950');
+  }
+  
+  .dark {
+    --background: theme('colors.zinc.950');
+    --foreground: theme('colors.zinc.100');
+  }
+  
+  * {
+    @apply box-border;
+  }
+  
+  html, body {
+    @apply p-0 m-0 overflow-x-hidden font-sans scroll-smooth scrollbar-none text-foreground;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-extrabold;
+  }
+  
+  h1 { @apply text-6xl; }
+  h2 { @apply text-5xl; }
+  h3 { @apply text-4xl; }
+  h4 { @apply text-3xl; }
+  h5 { @apply text-2xl; }
+  h6 { @apply text-base; }
+  
+  p {
+    @apply text-base font-light;
+  }
+  
+  a {
+    @apply text-inherit no-underline;
+  }
 }
 
 @layer utilities {
@@ -25,44 +56,6 @@ body {
   .scrollbar-none::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
-}
-
-h1,h2,h3,h4,h5,h6 {
-  @apply font-extrabold;
-  @apply text-slate-950 dark:text-slate-50;
-}
-
-h1 {
-  @apply text-6xl;
-}
-
-h2 {
-  @apply text-5xl;
-}
-
-h3 {
-  @apply text-4xl;
-}
-
-h4 {
-  @apply text-3xl;
-}
-
-h5 {
-  @apply text-2xl;
-}
-
-h6 {
-  @apply text-base;
-}
-
-p {
-  @apply text-slate-950 dark:text-slate-50;
-  @apply text-base;
-}
-
-a {
-  @apply text-inherit no-underline;
 }
 
 

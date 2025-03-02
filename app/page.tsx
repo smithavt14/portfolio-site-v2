@@ -14,18 +14,9 @@ export default function Home() {
       <Background pattern={pattern} />
       <Container className="flex flex-col">
         <div className="relative h-layout flex flex-col justify-between pb-10">
-          <Hero
-            title="Alex Smith"
-            subtitle="I build experiences."
-            description="I'm an endurance athlete and product guy who specializes in building digital experiences."
-          />
-          <Link
-            href="https://x.com/yuruyurau"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline"
-          >
-            <p className="text-right text-sm text-slate-400 dark:text-slate-400">
+          <Hero />
+          <Link href="https://x.com/yuruyurau" target="_blank" rel="noopener noreferrer" className="underline-none">
+            <p className="text-right text-sm text-slate-400 dark:text-slate-400 font-extralight">
               Original artwork by ア
             </p>
           </Link>
