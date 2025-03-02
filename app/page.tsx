@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <Background pattern={pattern} />
       <Container className="flex flex-col">
-        <div className="relative h-mobile-layout md:h-layout flex flex-col justify-between pb-10">
+        <div className="relative h-mobileLayout md:h-layout flex flex-col justify-between pb-10">
           <Hero />
           <Link href="https://x.com/yuruyurau" target="_blank" rel="noopener noreferrer" className="underline-none">
             <p className="text-right text-sm text-slate-400 dark:text-slate-400 font-extralight">

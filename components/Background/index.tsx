@@ -201,7 +201,7 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
   return (
     <div 
       ref={containerRef} 
-      className="absolute top-0 left-0 w-screen min-h-screen -z-10 overflow-hidden"
+      className="absolute top-0 left-0 w-screen min-h-dvh -z-10 overflow-hidden"
     >
       <Sketch setup={setup} draw={draw} windowResized={windowResized} />
     </div>

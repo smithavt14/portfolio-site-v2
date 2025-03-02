@@ -6,7 +6,7 @@
   --navbar-height: 116px;
   --navbar-height-mobile: 76px;
   --layout: calc(100dvh - var(--navbar-height));
-  --mobile-layout: calc(100dvh - var(--navbar-height));
+  --mobile-layout: calc(100dvh - var(--navbar-height-mobile));
 }
 
 @layer base {
