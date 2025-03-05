@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --navbar-height: 116px;
+  --navbar-height: 100px;
   --navbar-height-mobile: 76px;
   --layout: calc(100dvh - var(--navbar-height));
   --mobile-layout: calc(100dvh - var(--navbar-height-mobile));
@@ -32,11 +32,11 @@
     @apply font-extrabold;
   }
   
-  h1 { @apply text-6xl; }
-  h2 { @apply text-5xl; }
-  h3 { @apply text-4xl; }
-  h4 { @apply text-3xl; }
-  h5 { @apply text-2xl; }
+  h1 { @apply text-5xl font-black; }
+  h2 { @apply text-4xl font-black; }
+  h3 { @apply text-3xl; }
+  h4 { @apply text-2xl; }
+  h5 { @apply text-xl; }
   h6 { @apply text-base; }
   
   p {

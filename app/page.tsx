@@ -1,10 +1,10 @@
 "use client";
 
-import Background from "@/components/Background";
 import Container from "@/components/Container";
-import Hero from "@/components/Hero";
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
 import { useBackground } from "@/providers/BackgroundProvider";
-import Link from "next/link";
+import Background from "@/components/Background";
 
 export default function Home() {
   const { pattern } = useBackground();
@@ -13,14 +13,8 @@ export default function Home() {
     <>
       <Background pattern={pattern} />
       <Container className="flex flex-col">
-        <div className="relative h-mobileLayout md:h-layout flex flex-col justify-between pb-10">
-          <Hero />
-          <Link href="https://x.com/yuruyurau" target="_blank" rel="noopener noreferrer" className="underline-none">
-            <p className="text-right text-sm text-slate-400 dark:text-slate-400 font-extralight">
-              Original artwork by ア
-            </p>
-          </Link>
-        </div>
+        <HeroSection pattern={pattern} />
+        <AboutSection />
       </Container>
     </>
   );

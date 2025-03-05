@@ -11,24 +11,23 @@ const config: Config = {
     "./providers/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-  	height: {
-  		layout: 'var(--layout)',
-		mobileLayout: 'var(--mobile-layout)',
-  	},
-  	extend: {
-  		colors: {
-  			background: "var(--background)",
-  			foreground: "var(--foreground)",
-  		},
-  		fontSize: {
-  			responsive: [
-  				'clamp(34px, 8vw, 80px)',
-  				'1.1'
-  			]
-  		},
-  		keyframes: {},
-  		animation: {},
-  	}
+    extend: {
+      spacing: {
+        navbar: "var(--navbar-height)",
+        mobileNavbar: "var(--navbar-height-mobile)",
+		layout: "var(--layout)",
+        mobileLayout: "var(--mobile-layout)",
+      },
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+      },
+      fontSize: {
+        responsive: ["clamp(34px, 8vw, 80px)", "1.1"],
+      },
+      keyframes: {},
+      animation: {},
+    },
   },
   plugins: [require("tailwindcss-animate")],
 } as const;

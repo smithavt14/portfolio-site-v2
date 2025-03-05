@@ -21,7 +21,7 @@ export default function Hero({
   className,
 }: HeroProps) {
   return (
-    <section
+    <div
       className={`relative h-fit flex flex-col box-border z-20 py-5 gap-5 md:py-10 ${className}`}
     >
       <p>{`Hi, I'm`}</p>
@@ -58,6 +58,6 @@ export default function Hero({
           />
         )}
       </div>
-    </section>
+    </div>
   );
 }

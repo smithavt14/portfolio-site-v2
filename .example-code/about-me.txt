@@ -1,0 +1,85 @@
+import { Github, Linkedin, Mail, ArrowDown } from "lucide-react"
+import Image from "next/image"
+
+export default function AboutMe() {
+  return (
+    <section className="w-full bg-black py-24 text-white">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="mb-12 flex justify-center">
+          <ArrowDown className="h-8 w-8 animate-bounce text-[#8ca3c3]" />
+        </div>
+
+        <div className="grid gap-12 md:grid-cols-2">
+          <div className="flex flex-col justify-center space-y-6">
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">About Me</h2>
+            <div className="space-y-4">
+              <p className="text-lg text-gray-300">
+                With over 8 years of experience in product development and design, I've helped companies transform their
+                digital presence and build innovative solutions.
+              </p>
+              <p className="text-lg text-gray-300">
+                My approach combines strategic thinking with technical expertise, allowing me to bridge the gap between
+                business goals and user needs.
+              </p>
+              <p className="text-lg text-gray-300">
+                When I'm not coding or designing, you'll find me exploring new technologies, contributing to open-source
+                projects, or mentoring aspiring developers.
+              </p>
+            </div>
+
+            <div className="flex flex-col space-y-3">
+              <h3 className="text-xl font-semibold text-[#8ca3c3]">Core Skills</h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Product Strategy",
+                  "UX/UI Design",
+                  "Frontend Development",
+                  "React/Next.js",
+                  "Digital Transformation",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-[#8ca3c3]/30 bg-[#8ca3c3]/10 px-3 py-1 text-sm"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="relative flex items-center justify-center">
+            <div className="relative h-[400px] w-[400px] overflow-hidden rounded-lg">
+              <div className="absolute inset-0 z-10 bg-gradient-to-br from-black/80 via-black/50 to-transparent"></div>
+              <Image
+                src="/placeholder.svg?height=400&width=400"
+                alt="Alex Smith"
+                width={400}
+                height={400}
+                className="object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-6 -right-6 h-[200px] w-[200px] rounded-full bg-[#8ca3c3]/10 backdrop-blur-sm"></div>
+            <div className="absolute -top-6 -left-6 h-[150px] w-[150px] rounded-full bg-[#8ca3c3]/5 backdrop-blur-sm"></div>
+          </div>
+        </div>
+
+        <div className="mt-16 flex flex-col items-center justify-center space-y-6">
+          <h3 className="text-center text-2xl font-semibold">Let's Connect</h3>
+          <div className="flex space-x-6">
+            <a href="#" className="group rounded-full bg-white/5 p-3 transition-all hover:bg-white/10">
+              <Linkedin className="h-6 w-6 text-[#8ca3c3] transition-all group-hover:text-white" />
+            </a>
+            <a href="#" className="group rounded-full bg-white/5 p-3 transition-all hover:bg-white/10">
+              <Github className="h-6 w-6 text-[#8ca3c3] transition-all group-hover:text-white" />
+            </a>
+            <a href="#" className="group rounded-full bg-white/5 p-3 transition-all hover:bg-white/10">
+              <Mail className="h-6 w-6 text-[#8ca3c3] transition-all group-hover:text-white" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
