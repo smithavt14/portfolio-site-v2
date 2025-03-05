@@ -38,7 +38,7 @@ export default function AboutSection({ id = "about" }: AboutSectionProps) {
         skills={coreSkills}
       />
       <ProfileImage 
-        src="/images/alex.jpeg"
+        src="/portrait-images/alex.jpeg"
         alt="Profile Image"
       />
     </section>

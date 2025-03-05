@@ -58,9 +58,9 @@ export default function SectionName({ id = "sectionId" }: SectionProps) {
 
 - Use Tailwind utility classes consistently
 - Follow the project's color system with dark mode support:
-  - `text-zinc-400 dark:text-zinc-500` for secondary text
-  - `border-zinc-100 dark:border-zinc-800` for borders
-- Use consistent spacing with `space-y-6` for vertical spacing
+  - `text-slate-400 dark:text-slate-500` for secondary text
+  - `border-slate-100 dark:border-slate-800` for borders
+- Use grid gap values for consistent spacing: `grid gap-5` instead of `space-y-5`
 - Apply proper height constraints with `h-fit` where needed
 
 ## Visual Elements
@@ -113,4 +113,4 @@ const scrollToSection = () => {
 
 ## Example Implementation
 
-See `components/AboutSection/index.tsx` for a complete example of these principles in action.
+See `components/AboutSection/index.tsx` and `components/ProjectsSection/index.tsx` for complete examples of these principles in action. 

@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Creating Sections for Portfolio Site
 
 This document outlines best practices and patterns for creating new sections in the portfolio site.

@@ -23,7 +23,7 @@ export default function HeroSection({
   pattern = "flow",
 }: HeroSectionProps) {
   return (
-    <section className="min-h-dvh py-mobileNavbar md:py-navbar flex flex-col justify-between relative">
+    <section className="min-h-dvh py-mobileNavbar md:py-navbar flex flex-col justify-between relative box-border">
       {/* Hero component */}
       <Hero
         linkedinUrl={linkedinUrl}

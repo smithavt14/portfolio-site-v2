@@ -21,7 +21,7 @@ export default function ProfileImage({
         alt={alt}
         width={width}
         height={height}
-        className="object-cover grayscale h-96 w-auto aspect-square overflow-hidden rounded-lg border border-zinc-100 dark:border-zinc-800"
+        className="object-cover grayscale h-96 w-auto aspect-square overflow-hidden rounded-lg"
       />
     </div>
   );
