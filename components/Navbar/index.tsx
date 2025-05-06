@@ -6,7 +6,7 @@ import Container from "@/components/Container";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 w-full py-5 md:py-8 flex items-center z-50 duration-200 transition-all pointer-events-none">
+    <nav className="w-full py-5 md:py-8 flex items-center z-50 pointer-events-none">
       <Container className="flex items-center">
         <ThemeToggle/>
       </Container>

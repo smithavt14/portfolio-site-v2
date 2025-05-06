@@ -10,20 +10,16 @@ export default function AboutSection({ id = "about" }: AboutSectionProps) {
   const coreSkills = [
     "Product Strategy",
     "UX/UI Design",
-    "Frontend Development",
-    "React/Next.js",
-    "Digital Transformation",
+    "Modern Frontend (React / Next.js / Tailwind)",
+    "AI Integration & Tooling",
+    "Cross-Cultural Product Leadership",
   ];
 
   const aboutParagraphs = [
-    `With over 8 years of experience in product development and design,
-    I've helped companies transform their digital presence and build
-    innovative solutions.`,
-    `My approach combines strategic thinking with technical expertise,
-    allowing me to bridge the gap between business goals and user needs.`,
-    `When I'm not coding or designing, you'll find me exploring new
-    technologies, contributing to open-source projects, or mentoring
-    aspiring developers.`,
+    `I’m an American based in Shanghai, fluent in English and Chinese, with over a decade of experience building digital and experiential products across China and global markets.`,
+    `At Klarna, I lead product development on AI-driven features like Image Search, used by millions worldwide. Before that, I ran Le Wagon China, launching and scaling tech education programs across three cities — including online AI and data courses during COVID.`,
+    `I stay hands-on — designing, prototyping, and shipping products that turn emerging technology into practical tools. I care about building things that work, and work well.`,
+    `I’m always open to exchanging ideas, collaborating on meaningful projects, or exploring what’s next — feel free to reach out.`
   ];
 
   return (
@@ -31,16 +27,13 @@ export default function AboutSection({ id = "about" }: AboutSectionProps) {
       id={id}
       className="w-full min-h-dvh py-mobileNavbar md:py-navbar grid gap-12 md:grid-cols-2 items-center"
     >
-      <ContentSection 
+      <ContentSection
         title="About Me"
         paragraphs={aboutParagraphs}
         skillsTitle="Core Skills"
         skills={coreSkills}
       />
-      <ProfileImage 
-        src="/portrait-images/alex.jpeg"
-        alt="Profile Image"
-      />
+      <ProfileImage src="/portrait-images/alex.jpeg" alt="Profile Image" />
     </section>
   );
 }
