@@ -6,6 +6,7 @@ import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import { useBackground } from "@/providers/BackgroundProvider";
 import Background from "@/components/Background";
+import ProjectsSection from "@/components/ProjectsSection";
 
 export default function Home() {
   const { pattern } = useBackground();
@@ -16,6 +17,7 @@ export default function Home() {
       <Container className="flex flex-col">
         <HeroSection pattern={pattern} />
         <AboutSection />
+        <ProjectsSection />
         <Footer />
       </Container>
     </>
