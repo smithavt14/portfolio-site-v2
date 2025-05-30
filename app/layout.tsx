@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="dark">
       <ThemeProvider>
         <BackgroundProvider>
-          <body className={`${inter.className} inset-0 select-none bg-background text-foreground min-h-dvh relative`}>
+          <body className={`${inter.className} inset-0 bg-background text-foreground min-h-dvh relative`}>
             <Navbar />
             <main>{children}</main>
             <SpeedInsights />
