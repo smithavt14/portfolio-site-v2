@@ -44,7 +44,7 @@
   }
   
   a {
-    @apply text-inherit no-underline;
+    @apply text-inherit no-underline text-base font-light;
   }
 }
 
