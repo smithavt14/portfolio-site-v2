@@ -29,7 +29,7 @@ const config: Config = {
       animation: {},
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("daisyui")],
 } as const;
 
 export default config;
