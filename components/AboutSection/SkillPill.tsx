@@ -7,7 +7,7 @@ interface SkillPillProps {
 export default function SkillPill({ skill }: SkillPillProps) {
   return (
     <span
-      className="rounded-full border border-slate-300 dark:border-slate-700 bg-slate-200 dark:bg-slate-700 px-3 py-1 text-sm"
+      className="rounded-full border border-base-300 bg-base-200 px-3 py-1 text-sm text-base-content"
     >
       {skill}
     </span>

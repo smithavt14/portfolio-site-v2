@@ -26,8 +26,8 @@ export default function Hero({
     >
       <p>{`Hi, I'm`}</p>
       <h1 className="text-responsive flex flex-col">
-        <span>{`Alex Smith`}</span>
-        <span className="text-slate-400 dark:text-slate-400">{`Product Engineer`}</span>
+        <span className="text-primary">{`Alex Smith`}</span>
+        <span className="text-primary/60">{`Product Engineer`}</span>
       </h1>
       <p>{`Fluent in design, code, and cross-border teams. I bring ideas to life through tight loops of prototyping, testing, and shipping.`}</p>
       {/* Icon Links */}

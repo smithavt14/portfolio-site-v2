@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react";
+import SkillPill from "../AboutSection/SkillPill";
 
 export interface Project {
   id: string;
@@ -26,22 +27,20 @@ export default function ProjectSection({ project, isReversed = false }: ProjectS
     <div className="py-12 grid lg:grid-cols-2 gap-20 items-center">
       <div className={`space-y-6 lg:col-span-1 ${isReversed ? 'lg:order-2' : 'lg:order-1'}`}>
         <div>
-          <h2 className="text-3xl font-bold mb-2">{project.title}</h2>
+          <h4 className="mb-2">{project.title}</h4>
           {project.subtitle && (
-            <p className="text-sm text-slate-500 dark:text-slate-400">{project.subtitle}</p>
+            <p className="text-primary">{project.subtitle}</p>
           )}
         </div>
         
-        <p className="text-slate-600 dark:text-slate-400">{project.description}</p>
+        <p>{project.description}</p>
         
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
-            <span
+            <SkillPill
               key={`${project.id}-${tag}`}
-              className="badge badge-outline"
-            >
-              {tag}
-            </span>
+              skill={tag}
+            />
           ))}
         </div>
         
@@ -81,14 +80,32 @@ export default function ProjectSection({ project, isReversed = false }: ProjectS
           onMouseEnter={() => setIsImageHovered(true)}
           onMouseLeave={() => setIsImageHovered(false)}
         >
-          <Image
-            src={project.image || "/images/placeholder.jpg"}
-            alt={project.title}
-            width={800}
-            height={450}
-            className="w-full h-auto object-contain"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 60vw"
-          />
+          {project.liveUrl ? (
+            <Link
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block cursor-pointer"
+            >
+              <Image
+                src={project.image || "/images/placeholder.jpg"}
+                alt={project.title}
+                width={800}
+                height={450}
+                className="w-full h-auto object-contain"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 60vw"
+              />
+            </Link>
+          ) : (
+            <Image
+              src={project.image || "/images/placeholder.jpg"}
+              alt={project.title}
+              width={800}
+              height={450}
+              className="w-full h-auto object-contain"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 60vw"
+            />
+          )}
         </div>
       </div>
     </div>

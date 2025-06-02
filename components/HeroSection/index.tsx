@@ -38,7 +38,7 @@ export default function HeroSection({
         rel="noopener noreferrer"
         className="underline-none"
       >
-        <p className="text-sm text-slate-400 dark:text-slate-400 font-extralight">
+        <p className="text-sm text-base-content/60 font-extralight">
           Original artwork by {artistName}
         </p>
       </Link>

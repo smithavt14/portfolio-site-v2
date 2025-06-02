@@ -45,9 +45,8 @@ export default function ProjectsSection({ id = "projects" }: ProjectsSectionProp
       id={id}
       className="w-full min-h-dvh py-mobileNavbar md:py-navbar"
     >
-      <div className="container mx-auto px-4">
         <div className="grid gap-5 mb-10">
-          <h2 className="text-4xl font-bold">Projects</h2>
+          <h2>Projects</h2>
           <p>
             {`I'm passionate about building Web Apps and AI projects, constantly exploring new AI tools 
             and experimenting with innovative design patterns. My preferred tech stack includes NextJS, TypeScript, Tailwind CSS
@@ -55,9 +54,6 @@ export default function ProjectsSection({ id = "projects" }: ProjectsSectionProp
             of my recent work and personal projects. I'm always interested in taking on new challenges and am available 
             for freelance opportunities.`}
           </p>
-          <Link className="text-slate-600 dark:text-slate-400" href="mailto:hello@alex.cn.com">
-            <p>{`Send me an email if you want to collaborate!`}</p>
-          </Link>
         </div>
 
         <div className="flex flex-col">
@@ -73,7 +69,6 @@ export default function ProjectsSection({ id = "projects" }: ProjectsSectionProp
             </React.Fragment>
           ))}
         </div>
-      </div>
     </section>
   );
 }
