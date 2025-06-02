@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-const themes = ['nord', 'abyss', 'coffee'];
+const themes = ['sunset', 'forest', 'abyss', 'coffee'];
 
 export default function ThemeToggle() {
   const [currentTheme, setCurrentTheme] = useState('cupcake');
@@ -10,7 +10,7 @@ export default function ThemeToggle() {
   // Initialize theme from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    const theme = savedTheme && themes.includes(savedTheme) ? savedTheme : 'nord'; // default to cupcake
+    const theme = savedTheme && themes.includes(savedTheme) ? savedTheme : themes[0]; // default to sunset
     setCurrentTheme(theme);
     document.documentElement.setAttribute('data-theme', theme);
   }, []);

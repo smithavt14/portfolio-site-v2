@@ -4,7 +4,6 @@ const FlowPattern: Pattern = {
   initialize: (p5) => {
     // Check if we're in WebGL mode
     p5.isWebGL = p5._renderer.isP3D;
-    console.log("p5.isWebGL", p5.isWebGL);
     
     // Create points array
     p5.flowPoints = [];
@@ -34,8 +33,6 @@ const FlowPattern: Pattern = {
     // Adjust flowScaleFactor based on ratio
     // On smaller devices (ratio < 1), the pattern scale will increase
     p5.flowScaleFactor = 4.0 / ratio; // Increased scale for smaller devices using ratio
-
-    console.log("p5.flowScaleFactor", p5.flowScaleFactor);
     
     // For WebGL, set point size - much smaller points for less pixelated look
     if (p5.isWebGL) {

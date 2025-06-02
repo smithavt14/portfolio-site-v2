@@ -2,8 +2,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { BackgroundProvider } from "@/providers/BackgroundProvider";
 import Navbar from "@/components/Navbar";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,14 +21,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="nord">
+    <html lang="en" data-theme="sunset">
       <body className={`${inter.className}`}>
         <BackgroundProvider>
           <Navbar />
           <main>{children}</main>
-          <SpeedInsights />
-          <GoogleAnalytics />
+          <Footer />
         </BackgroundProvider>
+        <GoogleAnalytics />
       </body>
     </html>
   );

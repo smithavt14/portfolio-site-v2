@@ -18,7 +18,6 @@ export default function Home() {
         <HeroSection pattern={pattern} />
         <AboutSection />
         <ProjectsSection />
-        <Footer />
       </Container>
     </>
   );
