@@ -15,7 +15,7 @@ export default function PatternPicker() {
   return (
     <button
       onClick={togglePattern}
-      className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700"
+      className="p-2 rounded-md hover:bg-base-200"
       aria-label="Toggle background pattern"
     >
       {pattern === 'flow' ? (
