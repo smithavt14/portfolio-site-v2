@@ -1,6 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+
+@theme {
+  --spacing-navbar: 100px;
+  --spacing-navbar-mobile: 76px;
+  --spacing-layout: calc(100dvh - var(--spacing-navbar));
+  --spacing-mobile-layout: calc(100dvh - var(--spacing-navbar-mobile));
+}
 
 :root {
   --navbar-height: 100px;
@@ -10,26 +18,16 @@
 }
 
 @layer base {
-  :root {
-    --background: theme('colors.zinc.100');
-    --foreground: theme('colors.zinc.950');
-  }
-  
-  .dark {
-    --background: theme('colors.zinc.950');
-    --foreground: theme('colors.zinc.100');
-  }
-  
   * {
     @apply box-border;
   }
   
   html, body {
-    @apply p-0 m-0 overflow-x-hidden font-sans scroll-smooth scrollbar-none text-foreground;
+    @apply p-0 m-0 overflow-x-hidden font-sans scroll-smooth scrollbar-none text-base-content bg-base-100;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-extrabold;
+    @apply font-extrabold text-base-content;
   }
   
   h1 { @apply text-6xl font-black; }
@@ -40,7 +38,7 @@
   h6 { @apply text-xl; }
   
   p {
-    @apply text-base font-light;
+    @apply text-base font-light text-base-content;
   }
   
   a {
@@ -48,13 +46,11 @@
   }
 }
 
-@layer utilities {
-  .scrollbar-none {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-  }
+@utility scrollbar-none {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
   
-  .scrollbar-none::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
 }
