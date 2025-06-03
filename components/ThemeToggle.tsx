@@ -1,40 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { TbSunset2 } from "react-icons/tb";
-import { RiTreeLine } from "react-icons/ri";
-import { TiWaves } from "react-icons/ti";
-import { LuCoffee } from "react-icons/lu";
-
-const themes = ["sunset", "forest", "abyss", "coffee"];
-
-// Theme icons mapping
-const themeIcons = {
-  sunset: TbSunset2,
-  forest: RiTreeLine,
-  abyss: TiWaves,
-  coffee: LuCoffee,
-};
+import { themes, type Theme } from "@/lib/theme-config";
 
 export default function ThemeToggle() {
-  const [currentTheme, setCurrentTheme] = useState("sunset");
+  const [currentTheme, setCurrentTheme] = useState<Theme>("sunset");
 
-  // Initialize theme from localStorage
+  // Read the initial theme from the HTML data-theme attribute set by the server
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const theme =
-      savedTheme && themes.includes(savedTheme) ? savedTheme : themes[0]; // default to sunset
-    setCurrentTheme(theme);
-    document.documentElement.setAttribute("data-theme", theme);
+    const htmlElement = document.documentElement;
+    const initialTheme = htmlElement.getAttribute("data-theme") as Theme;
+    if (initialTheme && themes.includes(initialTheme)) {
+      setCurrentTheme(initialTheme);
+    }
   }, []);
 
-  const changeTheme = (theme: string) => {
+  const changeTheme = (theme: Theme) => {
     setCurrentTheme(theme);
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
   };
-
-  const CurrentIcon = themeIcons[currentTheme as keyof typeof themeIcons];
 
   return (
     <div className="dropdown dropdown-center mx-auto">
@@ -61,7 +45,6 @@ export default function ThemeToggle() {
         className="dropdown-content menu bg-base-200 rounded-box z-10 w-32 p-2 shadow-lg border border-base-300"
       >
         {themes.map((theme) => {
-          const IconComponent = themeIcons[theme as keyof typeof themeIcons];
           return (
             <li key={theme}>
               <a
@@ -73,10 +56,6 @@ export default function ThemeToggle() {
                 <span className="capitalize text-sm ">
                   {theme}
                 </span>
-                <IconComponent
-                  className="text-lg"
-                  aria-label={`${theme} icon`}
-                />
               </a>
             </li>
           );

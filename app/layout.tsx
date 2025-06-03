@@ -4,6 +4,7 @@ import { BackgroundProvider } from "@/providers/BackgroundProvider";
 import Navbar from "@/components/Navbar";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Footer from "@/components/Footer";
+import { getRandomTheme } from "@/lib/theme-config";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Generate a random theme on the server side to prevent hydration mismatch
+  const initialTheme = getRandomTheme();
+
   return (
-    <html lang="en" data-theme="sunset">
+    <html lang="en" data-theme={initialTheme}>
       <body className={`${inter.className}`}>
         <BackgroundProvider>
           <Navbar />
