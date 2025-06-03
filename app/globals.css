@@ -17,6 +17,13 @@
   
   html, body {
     @apply p-0 m-0 overflow-x-hidden font-sans scroll-smooth scrollbar-none text-base-content bg-base-100;
+    scroll-padding-top: calc(var(--navbar-height)); /* Add padding for fixed navbar plus extra space */
+  }
+  
+  @media (max-width: 768px) {
+    html, body {
+      scroll-padding-top: calc(var(--navbar-height-mobile)); /* Mobile navbar height plus extra space */
+    }
   }
   
   h1, h2, h3, h4, h5, h6 {

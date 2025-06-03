@@ -10,13 +10,14 @@ import { heroData } from "@/lib/hero-data";
 
 interface HeroProps {
   className?: string;
+  id?: string;
 }
 
-export default function Hero({ className }: HeroProps) {
+export default function Hero({ className, id = "hero" }: HeroProps) {
   const { personal, links, artist } = heroData;
 
   return (
-    <Section useFlexBetween>
+    <Section id={id} useFlexBetween>
       {/* Hero content */}
       <div
         className={`relative h-fit flex flex-col box-border z-20 py-5 gap-5 ${className || ''}`}
