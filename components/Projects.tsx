@@ -2,25 +2,16 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react";
-import SkillPill from "../AboutSection/SkillPill";
+import Pill from "@/components/Pill";
+import Section from "@/components/Section";
+import { projectsData, Project } from "@/lib/projects-data";
 
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  githubUrl?: string;
-  liveUrl?: string;
-  subtitle?: string;
+interface ProjectsProps {
+  id?: string;
 }
 
-interface ProjectSectionProps {
-  project: Project;
-  isReversed?: boolean;
-}
-
-export default function ProjectSection({ project, isReversed = false }: ProjectSectionProps) {
+// Individual project component (inlined)
+function ProjectItem({ project, isReversed = false }: { project: Project; isReversed?: boolean }) {
   const [isImageHovered, setIsImageHovered] = useState(false);
 
   return (
@@ -37,10 +28,7 @@ export default function ProjectSection({ project, isReversed = false }: ProjectS
         
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
-            <SkillPill
-              key={`${project.id}-${tag}`}
-              skill={tag}
-            />
+            <Pill key={`${project.id}-${tag}`}>{tag}</Pill>
           ))}
         </div>
         
@@ -109,5 +97,37 @@ export default function ProjectSection({ project, isReversed = false }: ProjectS
         </div>
       </div>
     </div>
+  );
+}
+
+export default function Projects({ id = "projects" }: ProjectsProps) {
+  const { title, description, projects } = projectsData;
+
+  return (
+    <Section 
+      id={id}
+      className="flex flex-col"
+    >
+      {/* Header */}
+      <div className="grid gap-5 mb-10">
+        <h2>{title}</h2>
+        <p>{description}</p>
+      </div>
+
+      {/* Projects List */}
+      <div className="flex flex-col">
+        {projects.map((project, index) => (
+          <React.Fragment key={project.id}>
+            <ProjectItem 
+              project={project} 
+              isReversed={index % 2 !== 0}
+            />
+            {index < projects.length - 1 && (
+              <div className="divider"></div>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
+    </Section>
   );
 } 
