@@ -67,10 +67,10 @@ export default function ThemeToggle() {
               <a
                 onClick={() => changeTheme(theme)}
                 className={`flex items-center gap-2 ${
-                  theme === currentTheme ? "active" : ""
+                  theme === currentTheme ? "active text-primary font-light" : "font-extralight"
                 }`}
               >
-                <span className="capitalize text-sm font-extralight">
+                <span className="capitalize text-sm ">
                   {theme}
                 </span>
                 <IconComponent

@@ -6,6 +6,7 @@ import About from "@/components/About";
 import { useBackground } from "@/providers/BackgroundProvider";
 import Background from "@/components/Background";
 import Projects from "@/components/Projects";
+import Blog from "@/components/Blog";
 
 export default function Home() {
   const { pattern } = useBackground();
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <About />
         <Projects />
+        <Blog />
       </Container>
     </>
   );
