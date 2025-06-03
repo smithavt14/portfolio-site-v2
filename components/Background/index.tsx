@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { useTheme } from "@/providers/ThemeProvider";
 import { PatternType } from "./types";
 
 // Import patterns
@@ -19,24 +18,23 @@ interface BackgroundProps {
 }
 
 export default function Background({ pattern = 'flow' }: BackgroundProps) {
-  const { theme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentPattern, setCurrentPattern] = useState<any>(FlowPattern);
   
   // Dynamically load the selected pattern
   useEffect(() => {
     const loadPattern = async () => {
-      if (pattern === 'flow') {
-        setCurrentPattern(FlowPattern);
-      } else {
-        // Dynamically import other patterns when needed
-        try {
-          const module = await import(`./patterns/${pattern}`);
-          setCurrentPattern(module.default);
-        } catch (error) {
-          console.error(`Failed to load pattern: ${pattern}`, error);
-          setCurrentPattern(FlowPattern); // Fallback to flow pattern
+      try {
+        if (pattern === 'flow') {
+          setCurrentPattern(FlowPattern);
+        } else {
+          // Dynamically import other patterns when needed
+          const patternModule = await import(`./patterns/${pattern}`);
+          setCurrentPattern(patternModule.default);
         }
+      } catch (error) {
+        console.error(`Failed to load pattern: ${pattern}`, error);
+        setCurrentPattern(FlowPattern); // Fallback to flow pattern
       }
     };
     
@@ -45,17 +43,19 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
   
   // Function to get colors based on theme
   const getColors = () => {
-    if (theme === 'dark') {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    
+    if (currentTheme === 'forest') {
       return {
         background: 6,
-        stroke: [255, 46],
-        accent: [100, 100, 255, 40]
+        stroke: [255, 120],
+        accent: [100, 100, 255, 100]
       };
     } else {
       return {
         background: 240,
-        stroke: [20, 46],
-        accent: [50, 50, 200, 40]
+        stroke: [80, 120],
+        accent: [50, 50, 200, 100]
       };
     }
   };
@@ -93,10 +93,11 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
 
   // Draw function for p5
   const draw = (p5: any) => {
-    const colors = getColors();
-    
     // Initialize common parameters if not already set
     if (!p5.initialized) {
+      // Cache colors for performance
+      p5.currentColors = getColors();
+      
       // Use timestamp for more entropy in randomization
       const now = new Date().getTime();
       p5.t = (now % 10000) / 1000 + p5.random(0, p5.TWO_PI * 5);
@@ -122,6 +123,9 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
       p5.initialized = true;
       p5.lastUpdateTime = p5.millis();
     }
+    
+    // Use cached colors for performance
+    const colors = p5.currentColors || getColors();
     
     // Calculate time delta for smooth animation
     const currentTime = p5.millis();
@@ -201,7 +205,12 @@ export default function Background({ pattern = 'flow' }: BackgroundProps) {
   return (
     <div 
       ref={containerRef} 
-      className="absolute top-0 left-0 w-screen min-h-dvh -z-10 overflow-hidden box-border"
+      className="absolute top-0 left-0 w-screen min-h-dvh overflow-hidden box-border pointer-events-none"
+      style={{ 
+        backgroundColor: 'transparent',
+        minHeight: '100dvh',
+        width: '100vw'
+      }}
     >
       <Sketch setup={setup} draw={draw} windowResized={windowResized} />
     </div>

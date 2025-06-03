@@ -1,0 +1,58 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+
+:root {
+  --navbar-height: calc(64px + 48px);
+  --navbar-height-mobile: 112px;
+  --layout-height: calc(100dvh - var(--navbar-height));
+  --mobile-layout-height: calc(100dvh - var(--navbar-height-mobile));
+}
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+  
+  html, body {
+    @apply p-0 m-0 overflow-x-hidden font-sans scroll-smooth scrollbar-none text-base-content bg-base-100;
+    scroll-padding-top: calc(var(--navbar-height)); /* Add padding for fixed navbar plus extra space */
+  }
+  
+  @media (max-width: 768px) {
+    html, body {
+      scroll-padding-top: calc(var(--navbar-height-mobile)); /* Mobile navbar height plus extra space */
+    }
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-extrabold text-base-content;
+  }
+  
+  h1 { @apply text-6xl font-black; }
+  h2 { @apply text-5xl font-black; }
+  h3 { @apply text-4xl; }
+  h4 { @apply text-3xl; }
+  h5 { @apply text-2xl; }
+  h6 { @apply text-xl; }
+  
+  p {
+    @apply text-base font-light text-base-content;
+  }
+  
+  a {
+    @apply text-inherit no-underline text-base font-light;
+  }
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+

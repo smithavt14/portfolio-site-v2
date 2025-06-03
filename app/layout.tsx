@@ -1,36 +1,35 @@
-import '@/styles/globals.css';
-import { Inter } from 'next/font/google';
-import Navbar from '@components/Navbar';
-import GoogleAnalytics from '@components/GoogleAnalytics';
-import { ThemeProvider } from '@/providers/ThemeProvider';
-import { BackgroundProvider } from '@/providers/BackgroundProvider';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { BackgroundProvider } from "@/providers/BackgroundProvider";
+import Navbar from "@/components/Navbar";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import Footer from "@/components/Footer";
 
-// Initialize the Inter font
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'Alex Smith | Development, Product, and Design',
-  description: 'Building digital experiences',
+  title: "Alex Smith | Development, Product, and Design",
+  description: "Building digital experiences",
   icons: {
-    icon: '/favicon.png',
+    icon: "/favicon.png",
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className="dark">
-      <ThemeProvider>
+    <html lang="en" data-theme="sunset">
+      <body className={`${inter.className}`}>
         <BackgroundProvider>
-          <body className={`${inter.className} inset-0 select-none bg-background text-foreground min-h-dvh relative`}>
-            <Navbar />
-            <main>{children}</main>
-            <SpeedInsights />
-            <GoogleAnalytics />
-          </body>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
         </BackgroundProvider>
-      </ThemeProvider>
+        <GoogleAnalytics />
+      </body>
     </html>
   );
-} 
+}
