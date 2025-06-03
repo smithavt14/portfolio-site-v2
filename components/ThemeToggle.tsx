@@ -27,7 +27,7 @@ export default function ThemeToggle() {
         role="button"
         className="flex items-center gap-2 text-primary hover:opacity-70 transition-opacity cursor-pointer bg-base-200 rounded-box p-2"
       >
-        <span className="capitalize text-sm text-primary font-extralight">
+        <span className="capitalize text-lg md:text-sm text-primary font-extralight">
           Theme
         </span>
         <svg
@@ -42,18 +42,18 @@ export default function ThemeToggle() {
       </div>
       <ul
         tabIndex={0}
-        className="dropdown-content menu bg-base-200 rounded-box z-10 w-32 p-2 shadow-lg border border-base-300"
+        className="dropdown-content menu bg-base-100 md:bg-base-200 rounded-box z-10 w-32 p-2 shadow-lg border border-base-300"
       >
         {themes.map((theme) => {
           return (
             <li key={theme}>
               <a
                 onClick={() => changeTheme(theme)}
-                className={`flex items-center gap-2 ${
+                className={`flex items-center justify-center gap-2 ${
                   theme === currentTheme ? "active text-primary font-light" : "font-extralight"
                 }`}
               >
-                <span className="capitalize text-sm ">
+                <span className="capitalize text-sm text-center">
                   {theme}
                 </span>
               </a>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import ThemeToggle from "@components/ThemeToggle";
 import HamburgerButton from "@/components/HamburgerButton";
 import Container from "./Container";
+import Logo from "./logo";
 
 interface NavLink {
   href: string;
@@ -96,8 +97,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navLinks }) => {
           }}
         >
           <Container
-            className={`flex flex-col min-h-dvh justify-center items-center space-y-8 py-[var(--navbar-height-mobile)] transition-opacity duration-300 delay-150 pointer-events-auto`}
+            className={`flex flex-col min-h-dvh justify-start items-center space-y-8 py-[var(--navbar-height-mobile)] transition-opacity duration-300 delay-150 pointer-events-auto`}
           >
+            <Link
+              href="#hero"
+              className="flex justify-center items-center cursor-pointer mb-20"
+              onClick={handleLinkClick}
+            >
+              <Logo className="w-10 h-10" />
+            </Link>
             {/* Navigation Links */}
             {navLinks.map((link, index) => (
               <Link

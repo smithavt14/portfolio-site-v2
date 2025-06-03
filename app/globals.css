@@ -22,7 +22,7 @@
   
   @media (max-width: 768px) {
     html, body {
-      scroll-padding-top: calc(var(--navbar-height-mobile)); /* Mobile navbar height plus extra space */
+      scroll-padding-top: 24px; /* Mobile navbar height plus extra space */
     }
   }
   
