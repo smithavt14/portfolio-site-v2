@@ -1,12 +1,11 @@
 "use client";
 
 import Container from "@/components/Container";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
 import { useBackground } from "@/providers/BackgroundProvider";
 import Background from "@/components/Background";
-import ProjectsSection from "@/components/ProjectsSection";
+import Projects from "@/components/Projects";
 
 export default function Home() {
   const { pattern } = useBackground();
@@ -14,10 +13,10 @@ export default function Home() {
   return (
     <>
       <Background pattern={pattern} />
-      <Container className="flex flex-col">
-        <HeroSection pattern={pattern} />
-        <AboutSection />
-        <ProjectsSection />
+      <Container className="flex flex-col pt-[var(--navbar-height-mobile)] md:pt-[var(--navbar-height)]">
+        <Hero />
+        <About />
+        <Projects />
       </Container>
     </>
   );

@@ -3,18 +3,11 @@
   themes: all;
 }
 
-@theme {
-  --spacing-navbar: 100px;
-  --spacing-navbar-mobile: 76px;
-  --spacing-layout: calc(100dvh - var(--spacing-navbar));
-  --spacing-mobile-layout: calc(100dvh - var(--spacing-navbar-mobile));
-}
-
 :root {
-  --navbar-height: 100px;
-  --navbar-height-mobile: 76px;
-  --layout: calc(100dvh - var(--navbar-height));
-  --mobile-layout: calc(100dvh - var(--navbar-height-mobile));
+  --navbar-height: calc(64px + 48px);
+  --navbar-height-mobile: 112px;
+  --layout-height: calc(100dvh - var(--navbar-height));
+  --mobile-layout-height: calc(100dvh - var(--navbar-height-mobile));
 }
 
 @layer base {
