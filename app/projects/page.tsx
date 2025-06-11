@@ -3,7 +3,7 @@ import Container from "@/components/Container";
 import Section from "@/components/Section";
 import { projectsData } from "@/lib/projects-data";
 import { Metadata } from "next";
-import ProjectsList from "@/app/projects/ProjectsList";
+import ProjectsList from "@/components/ProjectsList";
 
 export const metadata: Metadata = {
   title: "Projects - Alex Smith",

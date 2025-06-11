@@ -5,10 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react";
 import Pill from "@/components/Pill";
-import { projectsData, Project } from "@/lib/projects-data";
+import { Project } from "@/lib/projects-data";
 
-// Individual project component (inlined)
-function ProjectItem({ project, isReversed = false }: { project: Project; isReversed?: boolean }) {
+interface ProjectItemProps {
+  project: Project;
+  isReversed?: boolean;
+}
+
+export default function ProjectItem({ project, isReversed = false }: ProjectItemProps) {
   const [isImageHovered, setIsImageHovered] = useState(false);
 
   return (
@@ -93,26 +97,6 @@ function ProjectItem({ project, isReversed = false }: { project: Project; isReve
           )}
         </div>
       </div>
-    </div>
-  );
-}
-
-export default function ProjectsList() {
-  const { projects } = projectsData;
-
-  return (
-    <div className="flex flex-col">
-      {projects.map((project, index) => (
-        <React.Fragment key={project.id}>
-          <ProjectItem 
-            project={project} 
-            isReversed={index % 2 !== 0}
-          />
-          {index < projects.length - 1 && (
-            <div className="divider"></div>
-          )}
-        </React.Fragment>
-      ))}
     </div>
   );
 } 
