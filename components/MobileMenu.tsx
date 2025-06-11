@@ -100,7 +100,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navLinks }) => {
             className={`flex flex-col min-h-dvh justify-start items-center space-y-8 py-[var(--navbar-height-mobile)] transition-opacity duration-300 delay-150 pointer-events-auto`}
           >
             <Link
-              href="#hero"
+              href="/"
               className="flex justify-center items-center cursor-pointer mb-20"
               onClick={handleLinkClick}
             >

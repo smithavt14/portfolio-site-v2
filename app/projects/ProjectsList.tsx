@@ -5,12 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react";
 import Pill from "@/components/Pill";
-import Section from "@/components/Section";
 import { projectsData, Project } from "@/lib/projects-data";
-
-interface ProjectsProps {
-  id?: string;
-}
 
 // Individual project component (inlined)
 function ProjectItem({ project, isReversed = false }: { project: Project; isReversed?: boolean }) {
@@ -102,34 +97,22 @@ function ProjectItem({ project, isReversed = false }: { project: Project; isReve
   );
 }
 
-export default function Projects({ id = "projects" }: ProjectsProps) {
-  const { title, description, projects } = projectsData;
+export default function ProjectsList() {
+  const { projects } = projectsData;
 
   return (
-    <Section 
-      id={id}
-      className="flex flex-col"
-    >
-      {/* Header */}
-      <div className="grid gap-5 mb-10">
-        <h2>{title}</h2>
-        <p>{description}</p>
-      </div>
-
-      {/* Projects List */}
-      <div className="flex flex-col">
-        {projects.map((project, index) => (
-          <React.Fragment key={project.id}>
-            <ProjectItem 
-              project={project} 
-              isReversed={index % 2 !== 0}
-            />
-            {index < projects.length - 1 && (
-              <div className="divider"></div>
-            )}
-          </React.Fragment>
-        ))}
-      </div>
-    </Section>
+    <div className="flex flex-col">
+      {projects.map((project, index) => (
+        <React.Fragment key={project.id}>
+          <ProjectItem 
+            project={project} 
+            isReversed={index % 2 !== 0}
+          />
+          {index < projects.length - 1 && (
+            <div className="divider"></div>
+          )}
+        </React.Fragment>
+      ))}
+    </div>
   );
 } 
