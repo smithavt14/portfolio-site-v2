@@ -17,7 +17,7 @@ const Section: React.FC<SectionProps> = ({
   className = '', 
   useFlexBetween = false 
 }) => {
-  const baseClasses = "w-full min-h-[var(--mobile-layout-height)] md:min-h-[var(--layout-height)] py-10 relative box-border";
+  const baseClasses = "w-full min-h-[var(--mobile-layout-height)] md:min-h-[var(--layout-height)] pt-10 pb-10 first:pt-0 first:md:pt-10 relative box-border";
   const flexClasses = useFlexBetween ? "flex flex-col justify-between" : "";
   
   return (

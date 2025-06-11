@@ -12,7 +12,10 @@ export const metadata = {
   title: "Alex Smith | Development, Product, and Design",
   description: "Building digital experiences",
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" }
+    ],
   },
 };
 
@@ -29,7 +32,7 @@ export default function RootLayout({
       <body className={`${inter.className}`}>
         <BackgroundProvider>
           <Navbar />
-          <main>{children}</main>
+          <main className="pt-[var(--navbar-height-mobile)] md:pt-[var(--navbar-height)]">{children}</main>
           <Footer />
         </BackgroundProvider>
         <GoogleAnalytics />

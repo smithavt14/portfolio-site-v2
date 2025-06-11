@@ -1,0 +1,143 @@
+---
+description: A full description of the project structure, helpful for understanding full context
+globs: 
+alwaysApply: false
+---
+# Project Overview
+This is a Next.js 15 TypeScript portfolio site featuring interactive background animations built with p5.js. The site showcases modern React patterns, performance optimization, and a sophisticated theme system.
+
+## Tech Stack
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS + DaisyUI
+- **Animations**: GSAP + p5.js (WebGL rendering)
+- **State Management**: React Context (no external libraries)
+- **Package Manager**: pnpm
+- **Icons**: Lucide React, React Icons
+- **Node Version**: >=20.x
+
+## Directory Structure & Organization Rules
+
+### Core Directories
+```
+app/                    # Next.js App Router - pages, layouts, and route segments
+components/             # Reusable UI components (flat + nested for complex features)
+hooks/                  # Custom React hooks (currently reserved for future use)
+lib/                    # Utility functions, configurations, and static data
+providers/              # React Context providers for global state
+types/                  # TypeScript type definitions (centralized)
+public/                 # Static assets organized by category
+```
+
+### Component Organization Patterns
+1. **Flat Structure**: General UI components at root level (Navbar, Hero, About, Footer, etc.)
+2. **Nested Structure**: Complex features get subdirectories (Background/ with patterns/)
+3. **Co-location**: Feature-specific types and utilities stay with their components
+4. **Separation**: Reusable components separate from page-specific ones
+
+### Data Management Patterns
+1. **Static Data**: Store in `lib/*-data.ts` files (hero-data.ts, projects-data.ts, etc.)
+2. **Configuration**: Centralize in `lib/theme-config.ts` and `lib/utils.ts`
+3. **Global State**: Use React Context in `providers/` directory
+4. **Types**: Centralize shared types in `types/index.ts`, feature-specific types co-located
+
+## File Naming Conventions
+- **Components**: PascalCase (`.tsx`) - Hero.tsx, MobileMenu.tsx
+- **Data/Config files**: kebab-case (`.ts`) - hero-data.ts, theme-config.ts
+- **Directories**: lowercase or PascalCase for component groups - providers/, Background/
+- **Assets**: kebab-case with descriptive prefixes - project-images/, portrait-images/
+- **Hooks**: camelCase starting with 'use' - useTheme.ts (future)
+
+## Architecture Patterns
+
+### Next.js App Router
+- Use `layout.tsx` for shared layouts
+- Keep `page.tsx` minimal, delegate to components
+- Leverage server components by default
+- Use client components only when needed ('use client')
+
+### Component Patterns
+1. **Functional Components**: Always use function declarations
+2. **Props Interfaces**: Define in same file or co-located types file
+3. **Default Exports**: Use for main components
+4. **Named Exports**: Use for utilities and secondary components
+
+### Background Animation System
+- Pattern-based architecture in `components/Background/patterns/`
+- Each pattern implements: initialize, draw, resize methods
+- WebGL rendering with delta-time based animations
+- Theme-responsive color schemes
+- Performance optimization based on device capabilities
+
+### Theme System
+- Provider-based architecture (`providers/ThemeProvider.tsx`)
+- System preference detection with localStorage persistence
+- Context API for theme access throughout app
+- Dynamic theme switching with smooth transitions
+
+## Coding Guidelines
+
+### TypeScript
+- Use strict TypeScript configuration
+- Define interfaces for all props and data structures
+- Prefer interfaces over types for object shapes
+- Use proper typing for p5.js and animation systems
+
+### Styling
+- Tailwind-first approach with utility classes
+- DaisyUI for component base styles
+- CSS modules or globals.css for complex animations
+- Responsive design with mobile-first approach
+
+### Performance
+- Lazy load heavy components (animations)
+- Optimize images and assets
+- Use proper Next.js Image component
+- Delta-time based animations for smooth 60fps
+
+### State Management
+- React Context for global state (theme, background)
+- Local state with useState for component-specific data
+- No external state management libraries (keep it simple)
+
+## Development Patterns
+
+### Adding New Components
+1. Create in appropriate directory (flat vs nested)
+2. Include proper TypeScript interfaces
+3. Follow naming conventions
+4. Add to appropriate data files if needed
+5. Ensure responsive design
+
+### Adding New Features
+1. Assess if it needs its own directory
+2. Create types in appropriate location
+3. Add provider if global state needed
+4. Update documentation as necessary
+
+### Animation System Extensions
+1. New patterns go in `components/Background/patterns/`
+2. Implement pattern interface (initialize, draw, resize)
+3. Register in pattern picker system
+4. Ensure theme compatibility
+
+## Code Quality
+- Use ESLint configuration provided
+- Follow React best practices
+- Minimize bundle size (check imports)
+- Maintain accessibility standards
+- Test on multiple devices and themes
+
+## Asset Management
+- Organize by type in public/ subdirectories
+- Optimize images before adding
+- Use descriptive filenames
+- Include both light/dark variants for theme-specific assets
+
+## When Making Changes
+1. Maintain existing patterns and conventions
+2. Update related data files when adding new content
+3. Ensure mobile responsiveness
+4. Test theme switching functionality
+5. Verify animation performance
+6. Keep bundle size minimal 

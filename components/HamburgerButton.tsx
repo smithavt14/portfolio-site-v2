@@ -10,7 +10,7 @@ interface HamburgerButtonProps {
 const HamburgerButton: React.FC<HamburgerButtonProps> = ({ isOpen, onClick }) => {
   return (
     <div 
-      className="h-12 w-12 rounded-full relative z-[60] bg-base-200 pointer-events-auto cursor-pointer"
+      className="h-12 w-12 rounded-full relative z-[60] bg-base-200 pointer-events-auto cursor-pointer shadow-md"
       onClick={onClick}
     >
       {/* Span 1 - Top line */}

@@ -1,0 +1,132 @@
+---
+title: "Scaling Beyond Notion: How We Built a Custom Digital Platform for Dynamo Ventures"
+description: "How we transformed a VC firm's elementary Notion-based site into a sophisticated digital platform using PayloadCMS and Next.js, empowering their team with enterprise-grade content management that feels as simple as Notion."
+publishedDate: "2025-06-10"
+heroImage: "/blog/dynamo/dynamo-hero.png"
+heroSquare: "/blog/dynamo/dynamo-hero-square.png"
+---
+
+## Project Overview
+
+Dynamo Ventures is a US-based venture capital firm focused on backing relentless founders challenging how our industrial economy operates at the pre-seed and seed stage. In early 2025, as they were nearing the close of their latest <Link href="https://dynamo.vc/insights-and-news/dynamo-ventures-closes-54m-fund-iii-unlocks-liquidity-for-early-lps-with-top-decile-returns" target="_blank" rel="noopener noreferrer">Fund III</Link>, they faced a challenge that many growing firms encounter: their website no longer matched their sophistication.
+
+Their existing Notion-based site built on Super.so had served them well in their early days, but as Dynamo matured as a firm, the platform's elementary constraints became limiting. They needed a website that could grow with them—one that supported sophisticated content presentation, rich thought leadership, and professional design standards—while preserving the ease of use and collaborative workflow that had made Notion so effective for their team.
+
+This wasn't just about looking more professional; it was about building digital infrastructure that could scale with their ambitions while maintaining the simplicity their busy team relied on.
+
+## The Design Foundation
+
+Before any code was written, my colleague Nanjin led Dynamo through a comprehensive design discovery process that went far beyond aesthetics. Her strategic approach included deep dives into Dynamo's brand positioning, a thorough audit of their existing site's shortcomings, competitive benchmarking against other leading VC firms, and ultimately defining a clear direction for their new digital presence.
+
+<Image width={1000} height={1000} src="/blog/dynamo/dynamo-design.png" alt="Design mockups and style guide for Dynamo's new website" className="rounded-lg hidden md:block" />
+<Image width={1000} height={1000} src="/blog/dynamo/dynamo-design-mobile.png" alt="Design mockups and style guide for Dynamo's new website" className="rounded-lg block md:hidden" />
+
+The result was a polished, sophisticated design system that captured Dynamo's evolution while maintaining the accessibility their team valued.
+
+With the design vision established, this is where I stepped in to solve the technical challenge: how do you transform a beautiful design into a website that's as easy to manage as Notion, but infinitely more powerful?
+
+## Beyond Template Limitations
+
+Dynamo's previous site used [Super.so](https://super.so/), a no-code tool built on Notion. While Super.so had served them well initially, Dynamo's requirements had outgrown what any template-based solution could provide:
+
+- **Complete design control**: The new design required pixel-perfect implementation that no template could accommodate
+- **Sophisticated content architecture**: They needed modular, scalable structures for blogs, RFS posts, and team profiles that could grow with their content strategy
+- **Enhanced reader experience**: Long-form thought leadership demanded better layouts, automatic summaries, structured navigation, and table-of-contents generation
+- **Maintained simplicity**: Despite these advanced features, the editing experience needed to feel as intuitive as their beloved Notion workflow
+
+## Selecting the Tech Stack
+
+With Dynamo's design vision established, I faced what might be the most important technical decision of the project: selecting a content management system that could deliver on some seemingly contradictory requirements.
+
+Dynamo needed enterprise-level flexibility—the ability to create new pages, build custom forms, modify navigation, and manage complex content structures—all while maintaining the simplicity that made their Notion workflow so effective. They wanted their non-technical team to feel empowered, not overwhelmed.
+
+The CMS landscape in 2025 offers no shortage of options, each with different trade-offs between power and simplicity, customization and convenience. After evaluating the leading contenders, I landed on PayloadCMS paired with their managed cloud hosting—a combination that checked every box.
+
+<Image 
+  width={1000} 
+  height={600} 
+  src="/blog/dynamo/dynamo-tech.png" 
+  alt="Technical architecture diagram showing PayloadCMS, Next.js and other key components"
+  className="rounded-lg" 
+/>
+
+### Why PayloadCMS Won Out
+
+**Native Next.js Integration:** PayloadCMS is built specifically for Next.js, enabling seamless server-side rendering and optimal performance without the complexity of bridging separate systems. This tight integration meant faster load times and better SEO—critical for Dynamo's thought leadership content.
+
+**Real-Time Visual Editing:** Payload's Live Preview feature was a game-changer. Dynamo's team can see content changes instantly as they edit, eliminating the traditional save-draft-publish cycle that creates friction in content workflows.
+
+**Fully Customizable Admin Experience:** Unlike SaaS platforms that lock you into their interface, PayloadCMS allowed me to build a completely custom admin experience hosted at dynamo.vc/admin. This meant I could design the content management interface to match how Dynamo's team actually works.
+
+**All-in-One Simplicity:** PayloadCMS Cloud at $35/month includes MongoDB Atlas, file storage, and bandwidth—eliminating the complexity of managing multiple services while keeping costs predictable.
+
+<Image 
+  width={1000} 
+  height={700} 
+  src="/blog/dynamo/dynamo-payload-trans.png" 
+  alt="PayloadCMS admin interface showing custom fields and content types"
+  className="rounded-lg" 
+/>
+
+### The Alternatives Fell Short
+
+Contentful offered robustness but at a premium price with limited customization. Strapi provided flexibility but lacked the deep Next.js integration and real-time capabilities. Plasmic excelled as a visual builder but couldn't match the backend control and scalability requirements.
+
+PayloadCMS struck the perfect balance: enterprise-grade capabilities wrapped in an interface simple enough for busy VCs to manage independently.
+
+## Key Features & Technical Highlights
+
+The real challenge wasn't just migrating content or choosing the right tools—it was architecting a system sophisticated enough to handle Dynamo's complex needs while remaining intuitive for their team. What emerged was less of a traditional website and more of a custom digital platform.
+
+### A True Page-Builder Experience
+Rather than limiting Dynamo to pre-built templates, I developed a modular block system that functions like a custom page-builder within PayloadCMS. Their team can now construct any page using flexible components—sections, headers, cards, embeds, testimonials—all while maintaining perfect design consistency. It's the creative freedom of a design tool with the structure of a professional CMS.
+
+<Image 
+  width={1000} 
+  height={700} 
+  src="/blog/dynamo/dynamo-page-builder.png" 
+  alt="PayloadCMS admin dashboard showing webpage builder experience"
+  className="rounded-lg" 
+/>
+
+### Interconnected Content Architecture
+The site's content isn't just a collection of isolated pages and posts. I built a sophisticated architecture where Pages, Posts, Podcasts, Companies, Team Members, Testimonials, and Events all connect dynamically. A team member's profile automatically links to their authored posts, podcast appearances cross-reference company mentions, and testimonials can be pulled into relevant pages—creating a living, interconnected knowledge base.
+
+<Image 
+  width={1000} 
+  height={700} 
+  src="/blog/dynamo/dynamo-components.png" 
+  alt="PayloadCMS component library showing reusable blocks and sections"
+  className="rounded-lg" 
+/>
+
+### Complete Navigational Control
+Dynamo's team can restructure their entire site navigation without touching code. Whether they want to highlight a new fund announcement, reorganize their content sections, or add external links, the custom navigation system handles internal pages, collection items, and external URLs seamlessly.
+
+### Seamless Content Migration & Automation
+Custom migration scripts preserved hundreds of existing blog posts, podcasts, and profiles while automated daily imports keep their podcast feed current without manual intervention. Their content library grew stronger, not scattered.
+
+### Performance & Polish
+
+Beyond functionality, micro-animations bring the design to life with thoughtful hover effects and transitions. Every page is SEO-optimized with customizable meta fields, automatic sitemap generation, and performance considerations that keep the site fast and discoverable.
+
+## Client Partnership & Delivery
+
+Throughout this project, the focus wasn't just on delivering sophisticated technology—it was on creating a partnership that empowered Dynamo's team to succeed independently. The combination of deep technical architecture and thoughtful user experience design meant they could maintain their content strategy without losing the simplicity they valued.
+
+The real measure of success wasn't just in the features delivered, but in how seamlessly Dynamo's team adopted and began expanding upon the new platform.
+
+<Testimonial 
+  quote="Alex has an ability to wrangle a variety of requirements to deliver an elegant and effective solution on time and on budget with a high level of responsiveness and service."
+  author="Santosh Sankar"
+  title="Co-Founder & Managing Partner, Dynamo Ventures"
+  image="/blog/dynamo/dynamo-santosh.png"
+  logo="/blog/dynamo/dynamo-logo.svg"
+  logoAlt="Dynamo Ventures logo"
+/>
+
+## The Result
+
+What started as a Notion-based site that had outgrown its constraints became a sophisticated digital platform that scales with Dynamo's ambitions. Their team now has the independence to manage complex content, build new pages, and maintain their thought leadership presence—all while working within a system that feels as intuitive as the Notion workflow they loved.
+
+The new Dynamo Ventures site is now live: [dynamo.vc](https://dynamo.vc/) 

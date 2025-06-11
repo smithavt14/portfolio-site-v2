@@ -1,7 +1,9 @@
 @import "tailwindcss";
+@import "highlight.js/styles/github-dark.css";
 @plugin "daisyui" {
   themes: all;
 }
+@plugin "@tailwindcss/typography";
 
 :root {
   --navbar-height: calc(64px + 48px);

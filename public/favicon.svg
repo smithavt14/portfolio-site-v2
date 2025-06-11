@@ -1,0 +1,18 @@
+<svg width="32" height="32" viewBox="0 0 421 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* Light theme (default) */
+    .primary { fill: #000000; }
+    .primary-content { fill: #ffffff; }
+    
+    /* Dark theme */
+    @media (prefers-color-scheme: dark) {
+      .primary { fill: #ffffff; }
+      .primary-content { fill: #000000; }
+    }
+  </style>
+  
+  <ellipse cx="210.5" cy="210" rx="210.5" ry="210" class="primary"/>
+  <circle cx="111" cy="210" r="32" class="primary-content"/>
+  <circle cx="211" cy="210" r="32" class="primary-content"/>
+  <circle cx="311" cy="210" r="32" class="primary-content"/>
+</svg> 

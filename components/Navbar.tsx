@@ -9,17 +9,17 @@ import Logo from "./logo";
 
 const Navbar = () => {
   const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#projects", label: "Projects" },
-    { href: "#blog", label: "Blog" },
+    { href: "/#about", label: "About" },
+    { href: "/#projects", label: "Projects" },
+    { href: "/#blog", label: "Blog" },
   ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 w-full py-10 z-50 pointer-events-none">
       <Container className="flex justify-end md:justify-center">
-        <div className="hidden md:flex gap-32 items-center bg-base-200 py-4 px-10 rounded-full pointer-events-auto">
+        <div className="hidden md:flex gap-32 items-center bg-base-200 py-4 px-10 rounded-full pointer-events-auto shadow-sm">
           <Link
-            href="#hero"
+            href="/"
             className="flex justify-center items-center cursor-pointer"
           >
             <Logo className="w-8 h-8" />
