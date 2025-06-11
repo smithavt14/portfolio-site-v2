@@ -25,7 +25,7 @@ export default function Testimonial({
       <div className="card-body p-6 md:p-8">
         {/* Quote */}
         <blockquote className="text-lg md:text-xl text-base-content/90 font-light italic leading-relaxed mb-6">
-          "{quote}"
+          &ldquo;{quote}&rdquo;
         </blockquote>
         
         {/* Author info and logo section */}
