@@ -1,4 +1,4 @@
-export const themes = ["lofi", "sunset", "abyss", "coffee", "dim"] as const;
+export const themes = ["lofi", "sunset", "dim"] as const;
 
 export type Theme = typeof themes[number];
 

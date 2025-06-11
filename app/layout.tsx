@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   // Generate a random theme on the server side to prevent hydration mismatch
-  const initialTheme = getRandomTheme();
+  const initialTheme = "lofi";
 
   return (
     <html lang="en" data-theme={initialTheme}>
