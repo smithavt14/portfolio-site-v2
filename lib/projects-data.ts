@@ -11,7 +11,7 @@ export interface Project {
 
 export const projectsData = {
   title: "Projects",
-  description: "I'm passionate about building Web Apps and AI projects, constantly exploring new AI tools and experimenting with innovative design patterns. My preferred tech stack includes NextJS, TypeScript, Tailwind CSS and PayloadCMS, which I use to create efficient and scalable solutions. Below is a selection of my recent work and personal projects. I'm always interested in taking on new challenges and am available for freelance opportunities.",
+  description: "Below is a collection of recent client collaborations, career highlights, and personal projects. Ideas for projects tend to emerge during the simple moments, when I'm out for a run, walking my dog, or just enjoying quiet reflection. They're not all good, but they're a jumping off point for me to experiment with new tools, frameworks, and products. Take your time exploring these projects, and don't miss the deep dives waiting for you in the blog section.",
   projects: [
     {
       id: "1",
