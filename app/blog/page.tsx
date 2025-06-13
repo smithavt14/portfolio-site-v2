@@ -17,9 +17,7 @@ export default async function BlogPage() {
     <Section>
       <Container className="grid gap-5">
         <h1>Blog</h1>
-        <p className="text-xl text-base-content/70 leading-relaxed">
-          Latest thoughts on product development and building with emerging tech
-        </p>
+        <p>Latest thoughts on product development and building with emerging tech</p>
 
         {/* Blog Posts Grid */}
         {posts.length > 0 ? (

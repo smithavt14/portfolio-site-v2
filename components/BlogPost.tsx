@@ -46,7 +46,9 @@ export default function BlogPost({ post }: BlogPostProps) {
           className="mx-auto prose prose-base md:prose-lg
           prose-headings:text-base-content
           prose-p:text-base-content
-          prose-a:text-primary hover:prose-a:text-primary/60
+          prose-a:text-primary
+          prose-a:hover:text-primary/60
+          prose-a:no-underline
           prose-strong:text-base-content
           prose-code:text-base-content
           prose-pre:bg-base-200
