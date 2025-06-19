@@ -1,0 +1,52 @@
+---
+title: "How a Vibe Coding Workshop (Accidently) Taught Me About AI-Powered Development"
+description: "A workshop that didn't go as planned accidentally taught me the secret to building better apps with AI agents—so I built an open-source template around it"
+publishedDate: "2025-06-18"
+heroImage: "/blog/how-to-vibe/banner.jpg"
+heroSquare: "/blog/how-to-vibe/banner.jpg"
+---
+
+This past weekend, I paid money to attend a "Vibe Coding" workshop that promised to teach you to build a product from 0 to 1. I walked away with exactly one valuable thing—but honestly, <span className="text-primary italic">it was worth more than the entire day</span>.
+
+Going in, I expected sessions on rapid prototyping with tools like <Link href="https://lovable.dev/" target="_blank" rel="noopener noreferrer">Lovable</Link> or <Link href="https://v0.dev/" target="_blank" rel="noopener noreferrer">V0</Link>, maybe some design sprints with <Link href="https://miro.com/" target="_blank" rel="noopener noreferrer">Miro</Link>. What I got instead was a whole seminar on "startup mentality" and accessible design practices. When we finally reached the coding section, we spent two hours just trying to set up development environments. Most people couldn't get anything running because they'd never heard of Cursor, NodeJS, or package managers. It was chaos.
+
+But buried in all that nonsense was one gem: `.cursor/rules` as a project management system for AI agents. That single concept made the entire painful day worthwhile.
+
+## The Real Problem with AI Coding
+
+Here's what most people don't realize about coding with AI: you can't just chat with Claude or Cursor and expect to build great apps. You need structure, planning, and clear workflows. Without them, you end up with a mess of disconnected features and half-finished ideas.
+
+The magic trick isn't in the AI itself (although smarter AI is always helpful) — it's in giving your AI agent a systematic approach. A framework that guides it from your initial "I want to build..." all the way to a working product that real people can actually use.
+
+This is the secret sauce of browser-based prototyping tools like Lovable and V0. 
+
+## What I Built: A Template That Actually Works
+
+I liked the idea of using `.cursor/rules` as a project management system so much that I built an entire template around it. But instead of the clunky "waterfall" approach from the workshop (where you'd spend 30 minutes watching your agent build massive features before seeing any progress), I went with something way better: MVP-focused development.
+
+The template follows a 6-step routine: **Idea Analysis → MVP Planning → Development Planning → Implementation → Testing & Validation → Progress Review**. Your AI agent breaks everything down into phases, builds one small piece at a time, and gives you something testable after each step. No more waiting around hoping everything will work at the end.
+
+It creates detailed plans in a `tasks/plan.md` file, tracks your progress, recommends git commits when appropriate, and provides clear testing instructions for each phase. 
+
+The whole thing is built on a modern, production-ready stack that embraces the best of current web development: Next.js + TypeScript + Supabase + Drizzle ORM. No more juggling separate frontend and backend servers—just the ability to quickly spin up a free DB with Supabase, build with Next.js and Tailwind, and deploy with Vercel's GitHub integration. I've added a touch of DaisyUI for theme control and styling common components, plus intelligent code patterns that help your AI write consistent, high-quality code.
+
+<Image
+  width={1000}
+  height={600}
+  src="/blog/how-to-vibe/logos.jpg"
+  alt="Technology stack logos showing Next.js, TypeScript, Supabase, Drizzle ORM, and other modern development tools"
+  className="rounded-lg"
+/>
+
+## Who This Is For (And Who It's Not)
+
+This template is perfect if you're a developer who wants to move fast with AI assistance but still maintain quality and structure. It's for people who have some coding background and understand the basics of development environments, git, and package managers.
+
+It's definitely not for complete beginners—if you struggled with the setup at that workshop, stick with web-based tools like Lovable or v0 for now. But if you know your way around a terminal and want to ship real products quickly, this will be a game-changer.
+
+I've open-sourced the entire thing under MIT license. Check it out on [GitHub](https://github.com/smithavt14/vibe_template) and give it a star if you find it useful. It's brand new so I'm still working out some kinks. Feel free to comment or even submit a PR if you think anything can be improved. 
+
+<GitHubButton repoUrl="https://github.com/smithavt14/vibe_template">View Github Repo</GitHubButton>
+
+It's become my go-to starting point for new projects, and honestly, it's transformed how I prototype ideas. Not bad for something that came out of a vibe-coding workshop that was definitely missing the vibes.
+
