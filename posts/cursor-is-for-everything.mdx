@@ -1,0 +1,166 @@
+---
+title: "Cursor for Everything"
+description: "A dive into how Agentic Project Management in Cursor can be used to outperform in almost any complext task, not just software development."
+publishedDate: "2025-06-28"
+heroImage: "/blog/cursor/cursor-hero.png"
+heroSquare: "/blog/cursor/cursor-hero.png"
+---
+
+Last week I wrote about [building a project management system in Cursor](https://www.alex.cn.com/blog/how-to-vibe). I thought it was a clever way to organize software development work and keep AI agents focused. What I didn't expect was how well this system works for practically any complex project - troubleshooting, creative writing, research, documentation... *Now I use Cursor for everything*.
+
+To understand why this matters, we need to talk about the problem with how most people use AI today.
+
+## Why Chat Interfaces Fail
+
+ChatGPT, Claude, DeepSeek, and every other AI tool you've used shares the same fatal flaw when it comes to complex projects. They're built for conversations, not collaboration. And that difference becomes painfully obvious the moment you try to tackle anything substantial.
+
+I experienced this fully a couple weeks ago while battling the Great Firewall (GFW), trying to set up a VPN on my router. The troubleshooting started well enough, ChatGPT would recommend something like "SSH into your router and run this command," I'd do it, hit an error, paste the error message back, get a new suggestion, rinse and repeat. Three hours and sixty messages later, the AI helpfully suggested I contact my ISP for support. Haha, no. All that troubleshooting context, all those failed attempts and error messages, had vanished into the summarization void.
+
+Here's what went wrong:
+
+- **The Context Window.** Every chat has a token limit, and once your conversation gets too long, the AI starts summarizing to make room for new messages. Important details get compressed or lost entirely, forcing you to re-explain problems you solved minutes ago.
+
+- **Limited Memory Control.** The AI decides what to remember based on its own algorithms, not what you actually need for your project. You can't organize that memory, update it systematically, or ensure it captures the context that matters most.
+
+- **Weak Long-Term Reasoning.** Chat interfaces are great at solving individual problems but terrible at maintaining the big picture. As projects grow complex, the AI loses track of how different pieces connect, creating solutions that work in isolation but don't fit together.
+
+- **No Real Workspace.** Everything exists in the flow of conversation, making it nearly impossible to reference, update, or share your work systematically. ChatGPT's Canvas is a step forward, but it's clunky and nowhere near as smooth as working in a real editor.
+
+This is why most people hit a wall with AI tools. They work great for quick questions or simple tasks, but the moment you need sustained collaboration on something complex, the interface becomes your biggest obstacle.
+
+The solution isn't better AI, it's a better way to work with the AI you already have.
+
+## Why Cursor is OP
+
+Enter Cursor. What makes it different isn't that it has a smarter AI, it's that it treats AI collaboration like actual project work. Instead of chatting, you're working together in a real workspace with persistent memory, organized files, and the ability to think systematically about complex problems.
+
+Here's how it directly solves every problem I just described:
+
+- **Permanent Context Through Files.** Instead of relying on the AI's working memory, you store everything in actual files that the AI reads every time you interact. Nothing gets summarized or forgotten. That VPN troubleshooting session would live in a `troubleshooting.md` file the AI can reference indefinitely.
+
+- **Complete Memory Control.** You decide what the AI remembers and how it's organized by updating your project files as you learn new information. The AI doesn't get to choose what's important. You do.
+
+- **Structured Long-Term Thinking.** When everything lives in organized files, the AI can maintain the big picture and suggest next steps that build on previous work. Plus, you can start fresh conversations anytime. New AI instances instantly inherit all your project context from the files.
+
+- **A Real Workspace.** Cursor IS your workspace where you can edit documents directly, organize files however makes sense, and reference multiple pieces of information simultaneously. It's like having a desk partner who can read and edit everything instantly.
+
+And bonus points:
+
+- **Multiple AI Models, One Platform.** Cursor gives you access to GPT, Claude, and Gemini all working in the same project context for one subscription cost. Ask the same question to different models, compare their approaches, and take what you like from each, like having a team of specialists all reading from the same briefing materials.
+
+What used to be chaotic troubleshooting sessions become organized project work. Complex problems become manageable when you have the right tools for collaboration.
+
+## The System - "Agentic Project Management" in Practice
+
+This approach is called "Agentic Project Management" (APM). Sounds fancy, but it's actually pretty simple. Treat every complex problem like a project with clear goals, organized documentation, and systematic progress tracking.
+
+**The Essential Files**
+
+Start with three core files that every project needs:
+
+**`brief.mdc`** - Your project mission control. Define what you're trying to accomplish, any constraints or preferences, and how you want the AI to approach the work. Think of this as the briefing document that gets every new AI up to speed instantly. Goes into your `.cursor/rules` directory and is attached to every conversation. 
+
+**`tasks.md`** - Your roadmap and progress tracker. Break down the problem into specific, actionable steps. Update this as you complete tasks and discover new requirements. The AI can reference this to understand what's been done and what comes next.
+
+**`notes.md` or `research.md`** - Your knowledge base. Capture findings, failed attempts, useful resources, and insights. This becomes your project's persistent memory that no chat interface can summarize away.
+
+**Specialized Files as Needed:**
+
+Depending on your project, you might add:
+- `troubleshooting.md` for technical problems
+- `ideas.md` for brainstorming and exploration  
+- `contacts.md` for people and resources
+- `timeline.md` for deadlines and milestones
+
+That's it. Simple file organization that makes AI collaboration actually work for complex problems.
+
+## Your Turn - How to Get Started
+
+Ready to try this? Here's how to get started with Agentic Project Management: 
+
+**The Mindset Shift:** Stop thinking "conversation" and start thinking "project." Before you open Cursor, ask yourself: What am I trying to accomplish? What would success look like? How can I break this down into steps?
+
+**Basic Setup:**
+1. [Download Cursor](https://www.cursor.com/downloads) if you haven't already (macOS/Windows/Linux)
+2. Create a new folder for your project
+3. Open it in Cursor  
+4. Create your three core files: `.cursor/rules/brief.mdc`, `tasks.md`, and `notes.md`
+5. Start with a simple brief file that explains your goal
+
+**Simple Template:**
+
+Here's a template for your `brief.mdc` file to get you started:
+
+<TemplateDropdown title="brief.mdc">
+
+````
+# Project: [Your Project Name]
+
+## Goal
+[What you're trying to accomplish in 1-2 sentences]
+
+## Context
+[Brief background on the problem/situation]
+
+## Routine
+
+**Phase Detection:** Check tasks.md first. If empty or missing → start with Phase 1. If tasks exist but user requests specific work → jump to Phase 3 (reference notes.md for context). If most tasks complete → move to Phase 4.
+
+### Phase 1: Initial Exploration
+- Understand the core problem and requirements
+- Identify key constraints and resources
+- Clarify scope and success criteria
+
+### Phase 2: Project Setup
+- Break down the problem into specific tasks
+- Organize tasks by priority and dependencies
+- Set up documentation structure
+
+### Phase 3: Iterative Development
+- **Single-Task Focus**: Complete one task at a time
+- **Progress Documentation**: Update tasks.md after each step
+- **Continuous Validation**: Check progress against original goals
+- **Knowledge Capture**: Record findings, failures, and insights in notes.md
+
+### Phase 4: Review & Completion
+- Validate results against original goals
+- Document lessons learned
+- Identify any remaining tasks or follow-ups
+
+## File Structure
+
+```tree
+your-project/
+├── .cursor/
+│   └── rules/
+│       └── brief.mdc          # This file - project overview and guidelines
+├── tasks.md                   # Task breakdown and progress tracking
+├── notes.md                   # Research, findings, and knowledge base
+└── [specialized files as needed]
+    ├── troubleshooting.md     # For technical problems
+    ├── ideas.md               # For brainstorming sessions
+    ├── contacts.md            # People and resources
+    └── timeline.md            # Deadlines and milestones
+```
+
+## Agent Guidelines
+- Be direct and actionable in suggestions
+- Always reference previous work from project files
+- Ask clarifying questions when goals are unclear
+- Focus on one task at a time, update documentation consistently
+````
+
+</TemplateDropdown>
+
+**Perfect Use Cases:**
+- Researching and writing long-form content (like this post :-))
+- Troubleshooting technical problems
+- Business planning and strategy work
+- Learning new skills or subjects systematically
+- Home improvement projects with multiple phases
+
+**Start Small:** Pick a project that would normally take you several ChatGPT conversations. Set up the file structure and see how it changes your collaboration with AI.
+
+## Conclusion
+
+The tools for better AI collaboration aren't coming in some future update. They're here now. Sometimes the best coding practices aren't just for code. Try it on your next project. You might just discover that *Cursor is for everything* too.
