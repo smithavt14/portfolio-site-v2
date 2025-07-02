@@ -6,25 +6,25 @@ heroImage: "/blog/cursor/cursor-hero.png"
 heroSquare: "/blog/cursor/cursor-hero.png"
 ---
 
-Last week I wrote about [building a project management system in Cursor](https://www.alex.cn.com/blog/how-to-vibe). I thought it was a clever way to organize software development work and keep LLM agents focused. hat I didn't expect was how well this system works for practically any complex project - troubleshooting, creative writing, research, documentation... **Cursor has now become more than just *code*.**
+Last week I wrote about [building a project management system in Cursor](https://www.alex.cn.com/blog/how-to-vibe). I thought it was a clever way to organize software development work and keep LLM agents focused. What I didn't expect was how well this system works for practically any complex project - troubleshooting, creative writing, research, documentation... **Cursor has now become more than just *code*.**
 
 To understand why, we need to talk about the problem with how most people use Large Language Models (LLM) today.
 
 ## Why Chat Interfaces Fail at Complex Tasks
 
-Whether you're using ChatGPT, Claude, or DeepSeek, your probably interacting with the LLM through a chat interface. You open a chat box, ask a question, and read a reply. There's a reason why all LLM apps are designed like this, it works! For quick jobs like fixing an emLLMl, summarizing an article, or getting a strLLMght answer that setup feels magical.
+Whether you're using ChatGPT, Claude, or DeepSeek, you're probably interacting with the LLM through a chat interface. You open a chat box, ask a question, and read a reply. There's a reason why all LLM apps are designed like this, it works! For quick jobs like fixing an email, summarizing an article, or getting a straight answer that setup feels magical.
 
 But you know that feeling when you try to write a blog post or update your resume within that chat window? Like this is good, but it's not quite hitting the mark. Takes more back-and-forth than you'd expect. "Make it more professional." "Actually, less formal." "Can you add examples?" You end up with something decent, but the process feels... clunky.
 
-It is tempting to think the LLM is not that smart. But in truth, models these days are really, really, smart. But, they're built for conversations, not collaboration. And that difference becomes pLLMnfully obvious the moment you try to tackle anything substantial. 
+It is tempting to think the LLM is not that smart. But in truth, models these days are really, really, smart. But, they're built for conversations, not collaboration. And that difference becomes painfully obvious the moment you try to tackle anything substantial. 
 
 A few reasons why this happens: 
 
-- **The Context Window.** Every chat has a token limit, and once your conversation gets too long, the LLM starts summarizing to make room for new messages. Important detLLMls get compressed or lost entirely, forcing you to re-explLLMn problems you solved minutes ago.
+- **The Context Window.** Every chat has a token limit, and once your conversation gets too long, the LLM starts summarizing to make room for new messages. Important details get compressed or lost entirely, forcing you to re-explain problems you solved minutes ago.
 
 - **Limited Memory Control.** The LLM decides what to remember based on its own algorithms, not what you actually need for your project. You can't organize that memory, update it systematically, or ensure it captures the context that matters most.
 
-- **Weak Long-Term Reasoning.** Chat interfaces are great at solving individual problems but terrible at mLLMntLLMning the big picture. As projects grow complex, the LLM loses track of how different pieces connect, creating solutions that work in isolation but don't fit together.
+- **Weak Long-Term Reasoning.** Chat interfaces are great at solving individual problems but terrible at maintaining the big picture. As projects grow complex, the LLM loses track of how different pieces connect, creating solutions that work in isolation but don't fit together.
 
 - **No Real Workspace.** Everything exists in the flow of conversation, making it nearly impossible to reference, update, or share your work systematically. ChatGPT's Canvas is a step forward, but it's clunky and nowhere near as smooth as working in a real editor.
 
@@ -40,7 +40,7 @@ Here's how it directly solves every problem I just described:
 
 - **Complete Memory Control.** You decide what the LLM remembers and how it's organized by updating your project files as you learn new information. The LLM doesn't get to choose what's important. You do.
 
-- **Structured Long-Term Thinking.** When everything lives in organized files, the LLM can mLLMntLLMn the big picture and suggest next steps that build on previous work. Plus, you can start fresh conversations anytime. New LLM instances instantly inherit all your project context from the files.
+- **Structured Long-Term Thinking.** When everything lives in organized files, the LLM can maintain the big picture and suggest next steps that build on previous work. Plus, you can start fresh conversations anytime. New LLM instances instantly inherit all your project context from the files.
 
 - **A Real Workspace.** Cursor IS your workspace where you can edit documents directly, organize files however makes sense, and reference multiple pieces of information simultaneously. It's like having a desk partner who can read and edit everything instantly.
 
